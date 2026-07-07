@@ -1,6 +1,6 @@
 # CIM Systems Catalog
 
-Readily available named systems in this repository (**v1.0.0**).
+Readily available named systems in this repository (**v1.0.1**).
 
 ## Core systems
 
@@ -46,4 +46,4 @@ python3 01_tutorial/generate_tutorial_pdf.py
 
 ## License
 
-**Code:** MIT — [LICENSE](LICENSE) · **Architecture:** CIM — [LICENSE-CIM](LICENSE-CIM) · © 2026 NLS Records
+**Code:** [MIT](LICENSE) · **Architecture:** [CIM](LICENSE-CIM) · **Sketches:** [WTFPL](LICENSE-WTFPL) · © 2026 NLS Records

@@ -8,6 +8,7 @@
 |-------|---------|--------|
 | Code (Java, Python, shell) | [MIT](../LICENSE) | NLS Records |
 | Architecture, tutorials, notation, catalogs | [LICENSE-CIM](../LICENSE-CIM) | NLS Records |
+| Sketches, OCR, experiments | [WTFPL](../LICENSE-WTFPL) | NLS Records |
 
 ## Disinformation Architecture (defined)
 

@@ -1,7 +1,7 @@
 # CIM Generation Manifest
 
-**Version:** 1.0.0 (`v1.0.0`)  
-**Licenses:** MIT (code) · CIM v1.0 Disinformation Architecture (curatorial layer)  
+**Version:** 1.0.1 (`v1.0.1`)  
+**Licenses:** MIT (code) · CIM v1.0 (architecture) · WTFPL v2 (sketches & experiments)
 **Copyright:** NLS Records
 **Generation:** 1  
 **Created:** 2026-07-07  
@@ -26,7 +26,9 @@
 | `SYSTEMS.md` | Named systems catalog |
 | `LICENSE` | MIT License (software) |
 | `LICENSE-CIM` | CIM License — Disinformation Architecture |
-| `07_conversation_entity/CIM-LICENSE.md` | Human-readable CIM license summary |
+| `LICENSE-WTFPL` | WTFPL — Do What The Fuck You Want To |
+| `07_conversation_entity/CIM-LICENSE.md` | CIM license summary |
+| `07_conversation_entity/WTFPL-SCOPE.md` | WTFPL scope summary |
 | `04_rand_blockcode/blocks/pipeline.json` | A priori block wiring |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/` | SYSTEM A sketch |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/` | SYSTEM B sketch |

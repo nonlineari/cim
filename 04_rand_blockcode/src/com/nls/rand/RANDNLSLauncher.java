@@ -17,7 +17,7 @@ public final class RANDNLSLauncher {
                 ? Path.of(args[0])
                 : root.resolve("blocks/pipeline.json");
 
-        System.out.println("=== RAND BlockCode Java v1.0.0 ===");
+        System.out.println("=== RAND BlockCode Java v1.0.1 ===");
         System.out.println("RAND System B \\ RAND System A | NLS YOLODarket STEM");
         System.out.println("Pipeline: " + pipeline.toAbsolutePath());
 

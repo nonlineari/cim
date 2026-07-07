@@ -1,10 +1,12 @@
 {
-  "version": "1.0.0",
-  "tag": "v1.0.0",
+  "version": "1.0.1",
+  "tag": "v1.0.1",
   "licenses": {
     "software": "MIT",
     "architecture": "CIM-1.0",
-    "architecture_name": "Disinformation Architecture"
+    "architecture_name": "Disinformation Architecture",
+    "experiments": "WTFPL-2.0",
+    "experiments_name": "Do What The Fuck You Want To Public License"
   },
   "copyright_holder": "NLS Records",
   "generation": 1,
