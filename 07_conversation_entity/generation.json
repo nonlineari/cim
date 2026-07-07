@@ -1,15 +1,26 @@
 {
+  "version": "1.0.0",
+  "tag": "v1.0.0",
+  "license": "MIT",
   "generation": 1,
   "created": "2026-07-07",
   "root": "/home/s9/Downloads/CIM",
-  "notation": "RAND SYSTEM B \\ RAND SYSTEM A | NLS YOLODarket STEM",
+  "notation": "RAND System B \\ RAND System A | NLS YOLODarket STEM",
+  "systems_catalog": {
+    "RAND BlockCode Java": "04_rand_blockcode",
+    "RAND System A": "05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual",
+    "RAND System B": "05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP",
+    "NLS YOLODarket STEM": "04_rand_blockcode/src/com/nls/rand/nls",
+    "RAND Stacking vs Cloud Collision Tutorial": "01_tutorial",
+    "NLS Visualist": "06_nls_refs/nls-video-monitor"
+  },
   "entities": [
-    "stacking-vs-collision-tutorial",
+    "rand-stacking-vs-cloud-collision-tutorial",
     "rand-blockcode-java",
-    "extrusion3-mono-dual",
-    "extrusion3-mono-dup",
-    "nls-visualist-gravity",
-    "nls-hierarchy-stem"
+    "rand-system-a-extrusion3-dual",
+    "rand-system-b-extrusion3-dup",
+    "nls-yolodarket-stem",
+    "nls-visualist"
   ],
   "source_pdfs": [
     "02_source_pdfs/grok_report-2.pdf",
@@ -17,17 +28,19 @@
   ],
   "systems": {
     "A": {
-      "name": "Neat Stacking",
+      "display_name": "RAND System A",
+      "subtitle": "Neat Stacking",
       "sketch": "05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual",
       "blocks": ["a.pixel_stack", "a.lsystem_stack", "a.recursive_sphere", "a.spout_output"]
     },
     "B": {
-      "name": "Cloud Collision",
+      "display_name": "RAND System B",
+      "subtitle": "Cloud Collision",
       "sketch": "05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP",
       "blocks": ["b.audio_in", "b.fft_collision", "b.duplex_branch", "b.spectrum_render"]
     },
     "NLS": {
-      "name": "YOLODarket STEM",
+      "display_name": "NLS YOLODarket STEM",
       "blocks": ["nls.yolo_darket", "nls.hierarchy_stem", "nls.visualist_bridge"]
     }
   }

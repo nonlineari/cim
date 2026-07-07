@@ -1,9 +1,11 @@
 # CIM Generation Manifest
 
+**Version:** 1.0.0 (`v1.0.0`)  
+**License:** MIT  
 **Generation:** 1  
 **Created:** 2026-07-07  
 **Root:** `/home/s9/Downloads/CIM`  
-**Notation:** `RAND SYSTEM B \ RAND SYSTEM A | NLS YOLODarket STEM`
+**Notation:** `RAND System B \ RAND System A | NLS YOLODarket STEM`
 
 ## Conversation arcs preserved
 
@@ -19,7 +21,9 @@
 | `01_tutorial/stacking-vs-collision-digital-arts-tutorial.pdf` | Landscape presentation |
 | `02_source_pdfs/grok_report-2.pdf` | RAND stacking architecture (duplex-numeric) |
 | `02_source_pdfs/RAND_System_Design_Document.pdf` | RAND cloud collision (microservices) |
-| `04_rand_blockcode/src/com/nls/rand/RANDNLSLauncher.java` | Blockcode entry point |
+| `04_rand_blockcode/` | **RAND BlockCode Java** — entry `RANDNLSLauncher.java` |
+| `SYSTEMS.md` | Named systems catalog |
+| `LICENSE` | MIT License |
 | `04_rand_blockcode/blocks/pipeline.json` | A priori block wiring |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/` | SYSTEM A sketch |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/` | SYSTEM B sketch |

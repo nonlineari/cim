@@ -1,6 +1,8 @@
-# RAND NLS BlockCode — System Map
+# RAND BlockCode Java — System Map
 
-CIM generation entity archive for **04_rand_blockcode**.
+**CIM v1.0.0** · MIT License
+
+Named systems: **RAND System A** (Neat Stacking) · **RAND System B** (Cloud Collision) · **NLS YOLODarket STEM**
 
 ## Architecture
 

@@ -1,5 +1,7 @@
 {
-  "name": "cim_extrusion_rand_blockcode",
+  "name": "RAND BlockCode Java",
+  "version": "1.0.0",
+  "notation": "RAND System B \\ RAND System A | NLS YOLODarket STEM",
   "system": "hybrid",
   "config": {
     "cim_root": "/home/s9/Downloads/CIM",

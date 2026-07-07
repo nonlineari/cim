@@ -1,36 +1,62 @@
-# CIM — Conversation Entity Archive (Generation 1)
+# CIM — Conversation Entity Archive
 
-Local archive of the Grok conversation entity: **RAND SYSTEM B \ RAND SYSTEM A | NLS YOLODarket STEM**
+**Version 1.0.0** · MIT License
+
+Local archive of the Grok conversation entity:
+
+```
+RAND System B \ RAND System A | NLS YOLODarket STEM
+```
+
+## Readily available systems
+
+| System | Path |
+|--------|------|
+| **RAND BlockCode Java** | [`04_rand_blockcode/`](04_rand_blockcode/) |
+| **RAND System A** (Neat Stacking) | [`05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/`](05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/) |
+| **RAND System B** (Cloud Collision) | [`05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/`](05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/) |
+| **NLS YOLODarket STEM** | [`04_rand_blockcode/src/com/nls/rand/nls/`](04_rand_blockcode/src/com/nls/rand/nls/) |
+| **RAND Stacking vs Cloud Collision Tutorial** | [`01_tutorial/`](01_tutorial/) |
+| **NLS Visualist** | [`06_nls_refs/nls-video-monitor/`](06_nls_refs/nls-video-monitor/) |
+
+Full catalog: [SYSTEMS.md](SYSTEMS.md)
 
 ## Structure
 
 | Folder | Contents |
 |--------|----------|
-| `01_tutorial/` | Stacking vs. Cloud Collision — 30min tutorial (.md, landscape .pdf, generator) |
-| `02_source_pdfs/` | `grok_report-2.pdf`, `RAND_System_Design_Document.pdf` |
-| `03_parsed_sources/` | OCR text, page PNGs, RAND SDD extract |
-| `04_rand_blockcode/` | Modular blockcode Java system (13 blocks, `./build.sh`) |
-| `05_extrusion_sketches/` | MONO dual/dUP Processing sketches + GL002B reference |
-| `06_nls_refs/` | NLS Visualist (`GravityDesktop`, `nls-video-monitor`) |
+| `01_tutorial/` | RAND Stacking vs Cloud Collision — 30min tutorial |
+| `02_source_pdfs/` | RAND source PDFs |
+| `03_parsed_sources/` | OCR text, page PNGs |
+| `04_rand_blockcode/` | **RAND BlockCode Java** — 13 blocks |
+| `05_extrusion_sketches/` | RAND System A & B Processing sketches |
+| `06_nls_refs/` | NLS Visualist references |
 | `07_conversation_entity/` | Manifest, generation metadata |
 
 ## Quick start
 
 ```bash
-cd /home/s9/Downloads/CIM/04_rand_blockcode
+cd 04_rand_blockcode
 ./build.sh
 ```
 
-## Notation
+## RAND BlockCode Java
 
-```
-RAND SYSTEM B \ RAND SYSTEM A | NLS YOLODarket STEM
-```
+Modular block pipeline wiring **RAND System A → RAND System B → NLS YOLODarket STEM**:
 
-- **SYSTEM A** (`MONO_XXI_PS_INT_dual`) — neat stacking: pixel matrix, LSystem gen -13, Spout
-- **SYSTEM B** (`MONO_XXI_PS_INT_dUP`) — cloud collision: FFT 512 bands, AudioIn, BOX/QUAD
-- **NLS pipe** — YOLODarket → 11D Hierarchy STEM → Visualist catalog
+- **System A blocks:** `pixel_stack`, `lsystem_stack`, `recursive_sphere`, `spout_output`
+- **System B blocks:** `audio_in`, `fft_collision`, `duplex_branch`, `spectrum_render`
+- **NLS blocks:** `yolo_darket`, `hierarchy_stem`, `nls_visualist_bridge`
 
 ## Git
 
-Local repository rooted here. Large TIFF sequences under `VX_GL002B_A02/` are on disk but gitignored.
+```bash
+git tag -l          # v1.0.0
+git log --oneline
+```
+
+Large TIFF sequences (`VX_GL002B_A02/`) and build artifacts are gitignored but remain on disk.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

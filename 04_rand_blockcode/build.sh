@@ -9,7 +9,7 @@ SRC="$ROOT/src"
 
 mkdir -p "$CLASSES"
 
-echo "== RAND_NLS_BlockCode build =="
+echo "== RAND BlockCode Java v1.0.0 =="
 echo "ROOT: $ROOT"
 
 mapfile -t SOURCES < <(find "$SRC" -name '*.java' | sort)
