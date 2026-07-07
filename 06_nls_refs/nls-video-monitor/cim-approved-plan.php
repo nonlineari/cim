@@ -1,0 +1,49 @@
+<?php
+declare(strict_types=1);
+require __DIR__ . '/includes/hub.php';
+
+hub_render_head('CIM Approved Plan — RAND B \\ A | NLS');
+hub_wrap_open();
+hub_render_nav('cim-plan', true);
+?>
+    <blockquote>
+      Conversation Entity Archive: comparative .diff of neat stacking vs cloud collision,
+      modular blockcode Java, Extrusion3 dual/dUP sketches, NLS YOLODarket STEM pipe.
+    </blockquote>
+
+    <h1>CIM Entity Plan <span class="badge">APPROVED</span></h1>
+    <p class="sub">RAND System B \ RAND System A | NLS YOLODarket STEM · NLS Records</p>
+
+    <h2>Notation</h2>
+    <pre>RAND System B \ RAND System A | NLS YOLODarket STEM</pre>
+
+    <h2>Systems</h2>
+    <table>
+      <thead><tr><th>System</th><th>Role</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td><strong>RAND System A</strong></td><td>Neat stacking — pixel stack, LSystem -13, Spout</td><td><code>Extrusion3_MONO_XXI_PS_INT_dual</code></td></tr>
+        <tr><td><strong>RAND System B</strong></td><td>Cloud collision — FFT 512, AudioIn, BOX/QUAD</td><td><code>Extrusion3_MONO_XXI_PS_INT_dUP</code></td></tr>
+        <tr><td><strong>RAND BlockCode Java</strong></td><td>13 modular blocks, pipeline.json</td><td><code>04_rand_blockcode/</code></td></tr>
+        <tr><td><strong>NLS YOLODarket STEM</strong></td><td>Vision scan → hierarchy → Visualist catalog</td><td><code>src/com/nls/rand/nls/</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Block pipeline</h2>
+    <pre>extrusion_dual_adapter → pixel_stack → lsystem_stack → recursive_sphere → spout_output
+extrusion_dup_adapter → audio_in → fft_collision → duplex_branch → spectrum_render
+yolo_darket → hierarchy_stem → nls_visualist_bridge</pre>
+
+    <h2>Deliverables</h2>
+    <ul>
+      <li>30min tutorial — Stacking vs Cloud Collision (.md + landscape PDF)</li>
+      <li>Source PDFs — grok_report-2, RAND_System_Design_Document</li>
+      <li>License stack — MIT + CIM + WTFPL + OFL + URW Helvetica</li>
+      <li><strong>index.php</strong> Serve Hub — local review until GitHub private push</li>
+    </ul>
+
+    <h2>Typography</h2>
+    <p class="sub">NLS Visualist · A. Visualist · Helvetica — archived URW NimbusSans + ReportLab Standard 14</p>
+
+    <p class="sub" style="margin-top:24px;">Approved CIM generation · Serve Hub entry: <a href="/index.php">index.php</a></p>
+<?php
+hub_render_foot();

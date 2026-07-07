@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0;url=index.php">
   <title>CIM Serve Hub — NLS Records</title>
   <link rel="stylesheet" href="serve-hub-common.css">
 </head>
 <body>
   <div class="wrap">
+    <p class="sub">Redirecting to <a href="index.php">index.php</a> (PHP Serve Hub with shared navigation)…</p>
     <div class="nav">
-      <a href="index.htm"><strong>index.htm</strong></a>
+      <a href="index.php"><strong>index.php</strong></a>
       <a href="plan.html">Gravity Plan</a>
-      <a href="cim-approved-plan.html">CIM Plan</a>
-      <a href="licenses.html">Licenses</a>
-      <a href="changelog.html">Changelog</a>
-      <a href="git-review.html">Git Review</a>
+      <a href="cim-approved-plan.php">CIM Plan</a>
+      <a href="licenses.php">Licenses</a>
+      <a href="changelog.php">Changelog</a>
+      <a href="git-review.php">Git Review</a>
     </div>
 
     <h1>CIM Serve Hub <span class="badge badge-ok">REQUIRED ENTRY</span></h1>
@@ -42,8 +44,8 @@
 
     <h2>Local serve</h2>
     <pre>cd /home/s9/Downloads/CIM/06_nls_refs/nls-video-monitor
-python3 -m http.server 8765
-# open http://127.0.0.1:8765/index.htm</pre>
+./serve-cim.sh
+# open http://127.0.0.1:8765/index.php</pre>
 
     <h2>CIM archive paths</h2>
     <table>

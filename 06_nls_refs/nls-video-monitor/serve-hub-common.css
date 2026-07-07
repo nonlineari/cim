@@ -54,6 +54,7 @@ li { margin: 4px 0; }
 .nav { margin-bottom: 16px; }
 .nav a { color: var(--accent); margin-right: 14px; text-decoration: none; }
 .nav a:hover { text-decoration: underline; }
+.nav a.active { color: var(--ok); border-bottom: 1px solid var(--ok); padding-bottom: 2px; }
 .badge {
   display: inline-block;
   font-size: 0.7rem;
