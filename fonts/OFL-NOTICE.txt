@@ -1,0 +1,12 @@
+CIM Typography Layer — SIL Open Font License 1.1
+
+Copyright (c) 2026 NLS Records
+
+Font Software in this directory is licensed under the SIL Open Font License,
+Version 1.1. See ../LICENSE-OFL for the full license text.
+
+Reserved Font Names (when declared in FONTLOG.md):
+  — consult FONTLOG.md per family
+
+Documents generated with these fonts (tutorials, PDFs, presentations)
+are not required to be licensed under OFL.

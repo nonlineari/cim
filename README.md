@@ -1,8 +1,10 @@
 # CIM — Conversation Entity Archive
 
-**Version 1.0.1** · Copyright © 2026 NLS Records
+**Version 1.0.2** · Copyright © 2026 NLS Records
 
-**Licenses:** [MIT](LICENSE) (code) · [CIM](LICENSE-CIM) (architecture) · [WTFPL](LICENSE-WTFPL) (sketches & experiments)
+**Licenses:** [MIT](LICENSE) · [CIM](LICENSE-CIM) · [WTFPL](LICENSE-WTFPL) · [OFL-1.1](LICENSE-OFL)
+
+See [CHANGELOG.md](CHANGELOG.md)
 
 Local archive of the Grok conversation entity:
 
@@ -53,18 +55,19 @@ Modular block pipeline wiring **RAND System A → RAND System B → NLS YOLODark
 ## Git
 
 ```bash
-git tag -l          # v1.0.1
+git tag -l          # v1.0.2
 git log --oneline
 ```
 
 Large TIFF sequences (`VX_GL002B_A02/`) and build artifacts are gitignored but remain on disk.
 
-## Licenses (tri-license)
+## Licenses
 
 | Layer | License | Scope |
 |-------|---------|-------|
 | **Software** | [MIT](LICENSE) | RAND BlockCode Java, Python generators |
 | **Disinformation Architecture** | [CIM v1.0](LICENSE-CIM) | Tutorials, `.diff` docs, notation, manifests |
 | **Experiments** | [WTFPL v2](LICENSE-WTFPL) | Processing sketches, OCR dumps, NLS refs |
+| **Typography** | [OFL v1.1](LICENSE-OFL) | Font files in `fonts/` |
 
-Summaries: [CIM-LICENSE.md](07_conversation_entity/CIM-LICENSE.md) · [WTFPL-SCOPE.md](07_conversation_entity/WTFPL-SCOPE.md)
+Summaries: [CIM-LICENSE.md](07_conversation_entity/CIM-LICENSE.md) · [WTFPL-SCOPE.md](07_conversation_entity/WTFPL-SCOPE.md) · [OFL-SCOPE.md](07_conversation_entity/OFL-SCOPE.md)

@@ -1,7 +1,7 @@
 # CIM Generation Manifest
 
-**Version:** 1.0.1 (`v1.0.1`)  
-**Licenses:** MIT (code) · CIM v1.0 (architecture) · WTFPL v2 (sketches & experiments)
+**Version:** 1.0.2 (`v1.0.2`)  
+**Licenses:** MIT · CIM v1.0 · WTFPL v2 · OFL-1.1
 **Copyright:** NLS Records
 **Generation:** 1  
 **Created:** 2026-07-07  
@@ -29,6 +29,9 @@
 | `LICENSE-WTFPL` | WTFPL — Do What The Fuck You Want To |
 | `07_conversation_entity/CIM-LICENSE.md` | CIM license summary |
 | `07_conversation_entity/WTFPL-SCOPE.md` | WTFPL scope summary |
+| `LICENSE-OFL` | SIL Open Font License 1.1 |
+| `fonts/` | Typography layer (OFL) |
+| `CHANGELOG.md` | Release history |
 | `04_rand_blockcode/blocks/pipeline.json` | A priori block wiring |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/` | SYSTEM A sketch |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/` | SYSTEM B sketch |
