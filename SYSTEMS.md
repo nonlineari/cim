@@ -46,4 +46,4 @@ python3 01_tutorial/generate_tutorial_pdf.py
 
 ## License
 
-MIT — Copyright © 2026 NLS Records — see [LICENSE](LICENSE).
+**Code:** MIT — [LICENSE](LICENSE) · **Architecture:** CIM — [LICENSE-CIM](LICENSE-CIM) · © 2026 NLS Records

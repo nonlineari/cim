@@ -1,0 +1,129 @@
+CIM License — Disinformation Architecture
+Version 1.0 (2026)
+
+Copyright (c) 2026 NLS Records
+All rights reserved in the architectural layer; grants below apply to Licensed Material.
+
+────────────────────────────────────────────────────────────────────────────
+
+0. PREAMBLE — WHAT IS DISINFORMATION ARCHITECTURE?
+
+Disinformation Architecture is the deliberate design of information systems
+where multiple concurrent truths about the same entity may coexist without
+collapse — not to deceive, but to make visible how placement, metadata,
+collision, and register produce overlapping readings of content.
+
+CIM (Conversation Entity Archive) practices Disinformation Architecture through:
+
+  • neat stacking      — duplex-numeric fixed placement, mandatory register
+  • cloud collision    — distributed services, metadata drift, ML rerank
+  • .diff literacy     — reading divergence between layers as design material
+  • serendipity links  — non-topical association across branches
+
+This license governs the conceptual, curatorial, tutorial, and notational
+layers of CIM. Software source code in this repository remains under MIT
+License (see LICENSE) unless otherwise marked.
+
+────────────────────────────────────────────────────────────────────────────
+
+1. DEFINITIONS
+
+  "Licensor"         NLS Records
+  "Licensed Material"  CIM Generation archives, including but not limited to:
+                       tutorials, .diff documents, SYSTEMS catalogs, pipeline
+                       notation, sketch bindings, generation manifests,
+                       diagrams, and named system taxonomies
+                       (RAND BlockCode Java, RAND System A/B, NLS YOLODarket STEM)
+  "You"              Any person or entity exercising permissions granted here
+  "Forked Truth"     A derivative layer that assigns new placement, ID, or
+                       metadata to material already indexed elsewhere in the stack
+
+────────────────────────────────────────────────────────────────────────────
+
+2. GRANT OF RIGHTS
+
+Subject to Section 3, NLS Records grants You a worldwide, royalty-free,
+non-exclusive license to:
+
+  (a) use Licensed Material in research, teaching, exhibition, and studio practice;
+  (b) reproduce and distribute Licensed Material in whole or in part;
+  (c) create adaptations, .diffs, forks, and hybrid stacks;
+  (d) publicly perform or display works derived from Licensed Material;
+  (e) integrate Licensed Material with MIT-licensed code in this repository.
+
+────────────────────────────────────────────────────────────────────────────
+
+3. CONDITIONS
+
+  3.1 ATTRIBUTION
+      You must retain visible credit to NLS Records and CIM in all
+      distributions and public presentations of Licensed Material or
+      substantial adaptations:
+
+        "Disinformation Architecture — CIM / NLS Records"
+
+      Include the notation when materially relevant:
+
+        RAND System B \ RAND System A | NLS YOLODarket STEM
+
+  3.2 TRUTH LAYER DISCLOSURE
+      When You introduce a Forked Truth (new index, folder, cloud bucket,
+      or catalog entry for material already stacked elsewhere), You must
+      document the divergence — a short .diff, manifest line, or register
+      entry showing what changed between layers. Silence across stacks is
+      not permitted when both remain active.
+
+  3.3 NO SOLE-AUTHORITY CLAIM
+      You may not represent any single layer (topical folder, numeric ID,
+      database row, or search index) as the only authoritative location
+      of content when other licensed layers remain in circulation.
+
+  3.4 NON-MALICIOUS USE
+      This license does not grant permission to employ Disinformation
+      Architecture for fraud, impersonation, or deliberate harm. The
+      architecture studies collision; it is not a shield for bad faith.
+
+  3.5 NOTICE
+      Include a copy of this LICENSE-CIM with any redistribution of
+      Licensed Material.
+
+────────────────────────────────────────────────────────────────────────────
+
+4. RESERVED RIGHTS
+
+NLS Records reserves:
+
+  • the "NLS Records" name and label identity in commercial music/release context;
+  • right to publish canonical CIM generations and generation manifests;
+  • right to revoke this license for specific parties who violate Section 3.4,
+    upon written notice.
+
+────────────────────────────────────────────────────────────────────────────
+
+5. RELATIONSHIP TO OTHER LICENSES
+
+  Software (Java blockcode, Python utilities, build scripts)  →  MIT (LICENSE)
+  Architectural & curatorial layer (this document)          →  CIM License
+  Third-party sketches, PDFs, media                           →  original terms
+
+Where both apply, comply with both. MIT does not waive CIM conditions on
+Licensed Material; CIM does not restrict MIT rights on code.
+
+────────────────────────────────────────────────────────────────────────────
+
+6. DISCLAIMER
+
+LICENSED MATERIAL IS PROVIDED "AS IS". NLS RECORDS DISCLAIMS WARRANTIES OF
+ACCURACY, COMPLETENESS, OR SINGLE SOURCE OF TRUTH. IN DISINFORMATION
+ARCHITECTURE, PLURAL READINGS MAY BE CORRECT RELATIVE TO THEIR LAYER.
+
+────────────────────────────────────────────────────────────────────────────
+
+7. CONTACT
+
+Canonical archive: /home/s9/Downloads/CIM
+Rights holder:      NLS Records
+
+────────────────────────────────────────────────────────────────────────────
+
+END OF CIM LICENSE v1.0

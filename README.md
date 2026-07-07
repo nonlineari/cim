@@ -1,6 +1,8 @@
 # CIM — Conversation Entity Archive
 
-**Version 1.0.0** · MIT License · Copyright © 2026 NLS Records
+**Version 1.0.0** · Copyright © 2026 NLS Records
+
+**Licenses:** [MIT](LICENSE) (code) · [CIM — Disinformation Architecture](LICENSE-CIM) (tutorials, notation, catalogs)
 
 Local archive of the Grok conversation entity:
 
@@ -57,6 +59,11 @@ git log --oneline
 
 Large TIFF sequences (`VX_GL002B_A02/`) and build artifacts are gitignored but remain on disk.
 
-## License
+## Licenses
 
-MIT — see [LICENSE](LICENSE).
+| Layer | Document |
+|-------|----------|
+| **Software** | [MIT License](LICENSE) — NLS Records |
+| **Disinformation Architecture** | [CIM License](LICENSE-CIM) — tutorials, `.diff` docs, system notation, manifests |
+
+Summary: [07_conversation_entity/CIM-LICENSE.md](07_conversation_entity/CIM-LICENSE.md)

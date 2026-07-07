@@ -1,7 +1,7 @@
 # CIM Generation Manifest
 
 **Version:** 1.0.0 (`v1.0.0`)  
-**License:** MIT  
+**Licenses:** MIT (code) · CIM v1.0 Disinformation Architecture (curatorial layer)  
 **Copyright:** NLS Records
 **Generation:** 1  
 **Created:** 2026-07-07  
@@ -24,7 +24,9 @@
 | `02_source_pdfs/RAND_System_Design_Document.pdf` | RAND cloud collision (microservices) |
 | `04_rand_blockcode/` | **RAND BlockCode Java** — entry `RANDNLSLauncher.java` |
 | `SYSTEMS.md` | Named systems catalog |
-| `LICENSE` | MIT License |
+| `LICENSE` | MIT License (software) |
+| `LICENSE-CIM` | CIM License — Disinformation Architecture |
+| `07_conversation_entity/CIM-LICENSE.md` | Human-readable CIM license summary |
 | `04_rand_blockcode/blocks/pipeline.json` | A priori block wiring |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/` | SYSTEM A sketch |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/` | SYSTEM B sketch |

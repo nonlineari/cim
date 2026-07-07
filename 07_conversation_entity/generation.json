@@ -1,7 +1,11 @@
 {
   "version": "1.0.0",
   "tag": "v1.0.0",
-  "license": "MIT",
+  "licenses": {
+    "software": "MIT",
+    "architecture": "CIM-1.0",
+    "architecture_name": "Disinformation Architecture"
+  },
   "copyright_holder": "NLS Records",
   "generation": 1,
   "created": "2026-07-07",

@@ -2,12 +2,17 @@
 title: "Stacking vs. Cloud Collision"
 subtitle: "A .diff Tutorial on Data Content for Architectural Designers"
 duration: 30 minutes
+license: CIM-1.0 Disinformation Architecture
+copyright: NLS Records
 sources:
   - grok_report-2.pdf
   - RAND_System_Design_Document.pdf
 format: landscape presentation
 audience: architectural designers working in digital arts
 ---
+
+> *Disinformation Architecture — CIM / NLS Records*  
+> Licensed under [CIM License](../LICENSE-CIM). Code tooling: [MIT](../LICENSE).
 
 # Stacking vs. Cloud Collision
 ## Digital Arts Data Organization — 30-Minute Tutorial
