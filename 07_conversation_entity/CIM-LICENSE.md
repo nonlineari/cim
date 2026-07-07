@@ -9,7 +9,8 @@
 | Code (Java, Python, shell) | [MIT](../LICENSE) | NLS Records |
 | Architecture, tutorials, notation, catalogs | [LICENSE-CIM](../LICENSE-CIM) | NLS Records |
 | Sketches, OCR, experiments | [WTFPL](../LICENSE-WTFPL) | NLS Records |
-| Typography (`fonts/`) | [OFL-1.1](../LICENSE-OFL) | NLS Records |
+| **Helvetica (A. Visualist)** | [URW](../LICENSE-TYPOGRAPHY) · [LICENSE-URW.txt](../fonts/CIM-Visualist/Helvetica/NimbusSans/LICENSE-URW.txt) | NLS Records |
+| Future brand fonts | [OFL-1.1](../LICENSE-OFL) | NLS Records |
 
 ## Disinformation Architecture (defined)
 

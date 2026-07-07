@@ -1,0 +1,49 @@
+CIM Typography License Index
+Version 1.0 (2026)
+
+Copyright (c) 2026 NLS Records
+
+────────────────────────────────────────────────────────────────────────────
+
+1. HELVETICA CANON — NLS Visualist · A. Visualist
+
+  Archived substitute:  URW Nimbus Sans + Nimbus Mono PS
+  Path:                fonts/CIM-Visualist/Helvetica/NimbusSans/
+  License:             LICENSE-URW.txt (URW++ Base 35 / GPL-compatible)
+  Runtime (PDF):       ReportLab Standard 14 names — Helvetica, Helvetica-Bold,
+                       Helvetica-Oblique, Courier
+  Module:              fonts/cim_visualist_typography.py
+  Canon doc:           fonts/CIM-Visualist/A-VISUALIST.md
+
+  Credit line on exports:
+    NLS Visualist · A. Visualist · Helvetica — CIM / NLS Records
+
+  Refresh archive:     fonts/preserve_helvetica.sh
+
+  Note: Linotype Helvetica™ is proprietary. CIM archives URW NimbusSans metrics
+  as the PDF-compatible substitute preserved before host font removal.
+
+────────────────────────────────────────────────────────────────────────────
+
+2. OFL BRAND FONTS (future)
+
+  License:             LICENSE-OFL (SIL Open Font License 1.1)
+  Scope:               fonts/<FamilyName>/ when marked OFL in FONTLOG.md
+  Summary:             07_conversation_entity/OFL-SCOPE.md
+
+────────────────────────────────────────────────────────────────────────────
+
+3. RELATIONSHIP TO OTHER CIM LICENSES
+
+  Software              →  MIT (LICENSE)
+  Architecture          →  CIM (LICENSE-CIM)
+  Experiments           →  WTFPL (LICENSE-WTFPL)
+  Helvetica archive     →  URW (this index, LICENSE-URW.txt)
+  Future display fonts  →  OFL (LICENSE-OFL)
+
+────────────────────────────────────────────────────────────────────────────
+
+Rights holder: NLS Records
+Canonical archive: /home/s9/Downloads/CIM
+
+END OF LICENSE-TYPOGRAPHY v1.0

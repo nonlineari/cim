@@ -1,8 +1,9 @@
 # CIM — Conversation Entity Archive
 
-**Version 1.0.2** · Copyright © 2026 NLS Records
+**Version 1.0.4** · Copyright © 2026 NLS Records
 
-**Licenses:** [MIT](LICENSE) · [CIM](LICENSE-CIM) · [WTFPL](LICENSE-WTFPL) · [OFL-1.1](LICENSE-OFL)
+**Licenses:** [MIT](LICENSE) · [CIM](LICENSE-CIM) · [WTFPL](LICENSE-WTFPL) · [URW Helvetica](LICENSE-TYPOGRAPHY) · [OFL](LICENSE-OFL)  
+**Serve Hub:** [index.htm](06_nls_refs/nls-video-monitor/index.htm)
 
 See [CHANGELOG.md](CHANGELOG.md)
 
@@ -55,7 +56,7 @@ Modular block pipeline wiring **RAND System A → RAND System B → NLS YOLODark
 ## Git
 
 ```bash
-git tag -l          # v1.0.2
+git tag -l          # v1.0.4
 git log --oneline
 ```
 
@@ -68,6 +69,9 @@ Large TIFF sequences (`VX_GL002B_A02/`) and build artifacts are gitignored but r
 | **Software** | [MIT](LICENSE) | RAND BlockCode Java, Python generators |
 | **Disinformation Architecture** | [CIM v1.0](LICENSE-CIM) | Tutorials, `.diff` docs, notation, manifests |
 | **Experiments** | [WTFPL v2](LICENSE-WTFPL) | Processing sketches, OCR dumps, NLS refs |
-| **Typography** | [OFL v1.1](LICENSE-OFL) | Font files in `fonts/` |
+| **Helvetica (A. Visualist)** | [URW](LICENSE-TYPOGRAPHY) | NimbusSans archive, PDF Standard 14 |
+| **Future brand fonts** | [OFL v1.1](LICENSE-OFL) | OFL fonts in `fonts/` |
 
-Summaries: [CIM-LICENSE.md](07_conversation_entity/CIM-LICENSE.md) · [WTFPL-SCOPE.md](07_conversation_entity/WTFPL-SCOPE.md) · [OFL-SCOPE.md](07_conversation_entity/OFL-SCOPE.md)
+**Serve Hub:** [`06_nls_refs/nls-video-monitor/index.htm`](06_nls_refs/nls-video-monitor/index.htm) — local git review
+
+Summaries: [CIM-LICENSE.md](07_conversation_entity/CIM-LICENSE.md) · [WTFPL-SCOPE.md](07_conversation_entity/WTFPL-SCOPE.md) · [OFL-SCOPE.md](07_conversation_entity/OFL-SCOPE.md) · [URW-SCOPE.md](07_conversation_entity/URW-SCOPE.md)

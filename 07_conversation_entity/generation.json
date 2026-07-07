@@ -1,14 +1,17 @@
 {
-  "version": "1.0.2",
-  "tag": "v1.0.2",
+  "version": "1.0.4",
+  "tag": "v1.0.4",
+  "serve_hub": "06_nls_refs/nls-video-monitor/index.htm",
   "licenses": {
     "software": "MIT",
     "architecture": "CIM-1.0",
     "architecture_name": "Disinformation Architecture",
     "experiments": "WTFPL-2.0",
     "experiments_name": "Do What The Fuck You Want To Public License",
-    "typography": "OFL-1.1",
-    "typography_name": "SIL Open Font License"
+    "typography_helvetica": "URW-Base35",
+    "typography_helvetica_name": "NimbusSans A. Visualist canon",
+    "typography_ofl": "OFL-1.1",
+    "typography_ofl_name": "SIL Open Font License"
   },
   "copyright_holder": "NLS Records",
   "generation": 1,

@@ -104,9 +104,15 @@ NLS Records reserves:
 
   Software (Java blockcode, Python utilities, build scripts)  →  MIT (LICENSE)
   Architectural & curatorial layer (this document)          →  CIM License
-  Third-party sketches, PDFs, media                           →  original terms
+  Experiments (Processing sketches, OCR, NLS refs)          →  WTFPL (LICENSE-WTFPL)
+  Future brand fonts in fonts/                              →  OFL-1.1 (LICENSE-OFL)
+  Helvetica canon (A. Visualist, NimbusSans archive)        →  URW (LICENSE-TYPOGRAPHY)
+  Third-party sketches, PDFs, media                         →  original terms
 
-Where both apply, comply with both. MIT does not waive CIM conditions on
+PDF and Serve Hub exports using Helvetica must include:
+  NLS Visualist · A. Visualist · Helvetica — CIM / NLS Records
+
+Where multiple apply, comply with each. MIT does not waive CIM conditions on
 Licensed Material; CIM does not restrict MIT rights on code.
 
 ────────────────────────────────────────────────────────────────────────────

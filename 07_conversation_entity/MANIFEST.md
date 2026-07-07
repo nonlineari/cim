@@ -1,7 +1,8 @@
 # CIM Generation Manifest
 
-**Version:** 1.0.2 (`v1.0.2`)  
-**Licenses:** MIT · CIM v1.0 · WTFPL v2 · OFL-1.1
+**Version:** 1.0.4 (`v1.0.4`)  
+**Licenses:** MIT · CIM v1.0 · WTFPL v2 · URW Helvetica · OFL-1.1  
+**Serve Hub:** `06_nls_refs/nls-video-monitor/index.htm` (mandatory)
 **Copyright:** NLS Records
 **Generation:** 1  
 **Created:** 2026-07-07  
@@ -30,7 +31,9 @@
 | `07_conversation_entity/CIM-LICENSE.md` | CIM license summary |
 | `07_conversation_entity/WTFPL-SCOPE.md` | WTFPL scope summary |
 | `LICENSE-OFL` | SIL Open Font License 1.1 |
-| `fonts/` | Typography layer (OFL) |
+| `LICENSE-TYPOGRAPHY` | Helvetica / URW index (A. Visualist) |
+| `06_nls_refs/nls-video-monitor/index.htm` | **CIM Serve Hub** — local git review |
+| `fonts/` | Typography (URW Helvetica + OFL slot) |
 | `CHANGELOG.md` | Release history |
 | `04_rand_blockcode/blocks/pipeline.json` | A priori block wiring |
 | `05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/` | SYSTEM A sketch |

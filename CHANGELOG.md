@@ -5,6 +5,21 @@ Copyright © 2026 NLS Records.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.4] — 2026-07-07
+
+### Added
+
+- **`index.htm`** — mandatory CIM Serve Hub (`06_nls_refs/nls-video-monitor/`)
+- `licenses.html`, `changelog.html`, `cim-approved-plan.html`, `git-review.html`
+- `serve-hub-common.css`, `build_review_html.py`
+- [`LICENSE-TYPOGRAPHY`](LICENSE-TYPOGRAPHY), [`URW-SCOPE.md`](07_conversation_entity/URW-SCOPE.md)
+
+### Changed
+
+- License matrix: Helvetica (URW) separate from OFL
+- [`plan.html`](06_nls_refs/nls-video-monitor/plan.html) nav → `index.htm`
+- [`LICENSE-CIM`](LICENSE-CIM) §5 — full license relationship table
+
 ## [1.0.3] — 2026-07-07
 
 ### Added
@@ -76,6 +91,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `v1.0.0` — RAND BlockCode Java (MIT, © NLS Records)
 
+[1.0.4]: https://github.com/nlsrecords/cim/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/nlsrecords/cim/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/nlsrecords/cim/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/nlsrecords/cim/compare/v1.0.0...v1.0.1
