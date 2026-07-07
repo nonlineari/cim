@@ -10,17 +10,30 @@ hub_render_nav('changelog', true);
     <h1>CHANGELOG <span class="badge badge-ok">v<?= htmlspecialchars($version, ENT_QUOTES) ?></span></h1>
     <p class="sub">Copyright © 2026 NLS Records · <a href="<?= cim_href('CHANGELOG.md') ?>">CHANGELOG.md</a></p>
 
-    <h2>[1.0.4] — 2026-07-07</h2>
+    <h2>[1.0.5] — 2026-07-07</h2>
     <h3>Added</h3>
     <ul>
       <li><strong>index.php</strong> — PHP Serve Hub with shared nav + live git meta</li>
       <li>licenses.php, changelog.php, cim-approved-plan.php, git-review.php</li>
       <li>router.php, serve-cim.sh — CIM archive file serving</li>
+    </ul>
+    <h3>Changed</h3>
+    <ul>
+      <li>index.htm → index.php; plan.html / gravity_serve.html nav → PHP hub</li>
+      <li>serve-hub-common.css — active nav highlight</li>
+    </ul>
+
+    <h2>[1.0.4] — 2026-07-07</h2>
+    <h3>Added</h3>
+    <ul>
+      <li><strong>index.htm</strong> — mandatory CIM Serve Hub (local git review)</li>
+      <li>licenses.html, changelog.html, cim-approved-plan.html, git-review.html</li>
+      <li>serve-hub-common.css, build_review_html.py</li>
       <li>LICENSE-TYPOGRAPHY, URW-SCOPE.md — Helvetica in license matrix</li>
     </ul>
     <h3>Changed</h3>
     <ul>
-      <li>plan.html nav links to PHP hub</li>
+      <li>plan.html nav links to index.htm</li>
       <li>CIM-LICENSE.md — URW Helvetica separate from OFL</li>
     </ul>
 

@@ -5,6 +5,25 @@ Copyright © 2026 NLS Records.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.5] — 2026-07-07
+
+### Added
+
+- **PHP Serve Hub** — `index.php` with shared navigation (`includes/hub.php`)
+- `licenses.php`, `changelog.php`, `cim-approved-plan.php`, `git-review.php`
+- `router.php`, `serve-cim.sh` — PHP built-in server; CIM archive files at `/LICENSE`, `/CHANGELOG.md`, etc.
+- Live git meta on hub pages (no `build_review_html.py` run required for PHP entry)
+
+### Changed
+
+- `index.htm` — redirects to `index.php`; static HTML review pages redirect to `.php` via router
+- [`plan.html`](06_nls_refs/nls-video-monitor/plan.html), [`gravity_serve.html`](06_nls_refs/nls-video-monitor/gravity_serve.html) — nav links back to PHP hub
+- [`serve-hub-common.css`](06_nls_refs/nls-video-monitor/serve-hub-common.css) — active nav state
+
+### Tagged
+
+- `v1.0.5` — PHP Serve Hub + shared navigation
+
 ## [1.0.4] — 2026-07-07
 
 ### Added
@@ -91,6 +110,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `v1.0.0` — RAND BlockCode Java (MIT, © NLS Records)
 
+[1.0.5]: https://github.com/nlsrecords/cim/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/nlsrecords/cim/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/nlsrecords/cim/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/nlsrecords/cim/compare/v1.0.1...v1.0.2

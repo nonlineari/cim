@@ -1,6 +1,6 @@
 # CIM — Conversation Entity Archive
 
-**Version 1.0.4** · Copyright © 2026 NLS Records
+**Version 1.0.5** · Copyright © 2026 NLS Records
 
 **Licenses:** [MIT](LICENSE) · [CIM](LICENSE-CIM) · [WTFPL](LICENSE-WTFPL) · [URW Helvetica](LICENSE-TYPOGRAPHY) · [OFL](LICENSE-OFL)  
 **Serve Hub:** [index.htm](06_nls_refs/nls-video-monitor/index.htm)
@@ -56,7 +56,7 @@ Modular block pipeline wiring **RAND System A → RAND System B → NLS YOLODark
 ## Git
 
 ```bash
-git tag -l          # v1.0.4
+git tag -l          # v1.0.5
 git log --oneline
 ```
 

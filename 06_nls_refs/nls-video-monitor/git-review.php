@@ -37,7 +37,7 @@ cd 06_nls_refs/nls-video-monitor
       <li>☐ <a href="/licenses.php">licenses.php</a> — URW Helvetica row + CIM file links work</li>
       <li>☐ <a href="/cim-approved-plan.php">cim-approved-plan.php</a> — APPROVED badge</li>
       <li>☐ <code>04_rand_blockcode/build.sh</code> passes</li>
-      <li>☐ Tags v1.0.0 … v1.0.4 on main</li>
+      <li>☐ Tags v1.0.0 … v1.0.5 on main</li>
     </ul>
 <?php
 hub_render_foot();

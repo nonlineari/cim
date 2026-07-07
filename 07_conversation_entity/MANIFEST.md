@@ -1,6 +1,6 @@
 # CIM Generation Manifest
 
-**Version:** 1.0.4 (`v1.0.4`)  
+**Version:** 1.0.5 (`v1.0.5`)  
 **Licenses:** MIT · CIM v1.0 · WTFPL v2 · URW Helvetica · OFL-1.1  
 **Serve Hub:** `06_nls_refs/nls-video-monitor/index.htm` (mandatory)
 **Copyright:** NLS Records

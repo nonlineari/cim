@@ -15,7 +15,7 @@ hub_render_nav('index');
     <h2>Review pages</h2>
     <div class="cards">
       <div class="card"><a href="/licenses.php">licenses.php</a><p>MIT · CIM · WTFPL · OFL · URW Helvetica</p></div>
-      <div class="card"><a href="/changelog.php">changelog.php</a><p>Release history v1.0.0–v1.0.4</p></div>
+      <div class="card"><a href="/changelog.php">changelog.php</a><p>Release history v1.0.0–v1.0.5</p></div>
       <div class="card"><a href="/cim-approved-plan.php">cim-approved-plan.php</a><p>CIM entity APPROVED plan</p></div>
       <div class="card"><a href="/git-review.php">git-review.php</a><p>GitHub private push checklist</p></div>
       <div class="card"><a href="/plan.html">plan.html</a><p>Gravity AVD/POS APPROVED plan</p></div>

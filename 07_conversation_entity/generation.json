@@ -1,7 +1,7 @@
 {
-  "version": "1.0.4",
-  "tag": "v1.0.4",
-  "serve_hub": "06_nls_refs/nls-video-monitor/index.htm",
+  "version": "1.0.5",
+  "tag": "v1.0.5",
+  "serve_hub": "06_nls_refs/nls-video-monitor/index.php",
   "licenses": {
     "software": "MIT",
     "architecture": "CIM-1.0",
