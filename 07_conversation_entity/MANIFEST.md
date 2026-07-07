@@ -2,6 +2,7 @@
 
 **Version:** 1.0.0 (`v1.0.0`)  
 **License:** MIT  
+**Copyright:** NLS Records
 **Generation:** 1  
 **Created:** 2026-07-07  
 **Root:** `/home/s9/Downloads/CIM`  

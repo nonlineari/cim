@@ -1,6 +1,6 @@
 # CIM — Conversation Entity Archive
 
-**Version 1.0.0** · MIT License
+**Version 1.0.0** · MIT License · Copyright © 2026 NLS Records
 
 Local archive of the Grok conversation entity:
 

@@ -1,6 +1,6 @@
 # RAND BlockCode Java
 
-**CIM v1.0.0** · MIT License
+**CIM v1.0.0** · MIT License · © NLS Records
 
 Modular a priori blockcode engine for **RAND System A**, **RAND System B**, and **NLS YOLODarket STEM**.
 
