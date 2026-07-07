@@ -5,6 +5,20 @@ Copyright © 2026 NLS Records.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.3] — 2026-07-07
+
+### Added
+
+- **Helvetica canon** — `fonts/CIM-Visualist/A-VISUALIST.md` (NLS Visualist · A. Visualist)
+- `fonts/cim_visualist_typography.py` — shared Helvetica / Visualist constants
+- `fonts/CIM-Visualist/Helvetica/NimbusSans/` — archived URW substitute (`.afm`, `.t1`)
+- `fonts/preserve_helvetica.sh` — re-copy fonts before host takedown
+
+### Changed
+
+- `01_tutorial/generate_tutorial_pdf.py` — Helvetica via typography module; Visualist header/footer; output under CIM
+- `fonts/FONTLOG.md` — Helvetica registered as primary face (not OFL placeholder)
+
 ## [1.0.2] — 2026-07-07
 
 ### Added
@@ -62,6 +76,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `v1.0.0` — RAND BlockCode Java (MIT, © NLS Records)
 
+[1.0.3]: https://github.com/nlsrecords/cim/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/nlsrecords/cim/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/nlsrecords/cim/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/nlsrecords/cim/releases/tag/v1.0.0

@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Generate landscape PDF tutorial from stacking-vs-collision content."""
+"""Generate landscape PDF tutorial — NLS Visualist · A. Visualist · Helvetica."""
+
+import sys
+from pathlib import Path
+
+CIM_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(CIM_ROOT / "fonts"))
+from cim_visualist_typography import HELVETICA, VISUALIST_CREDIT, VISUALIST_HEADER, verify_archive
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
@@ -12,7 +19,8 @@ from reportlab.platypus import (
 )
 from reportlab.pdfgen import canvas
 
-OUTPUT = "/home/s9/Downloads/stacking-vs-collision-digital-arts-tutorial.pdf"
+OUTPUT = str(CIM_ROOT / "01_tutorial" / "stacking-vs-collision-digital-arts-tutorial.pdf")
+H = HELVETICA
 PAGE_W, PAGE_H = landscape(A4)
 MARGIN = 0.55 * inch
 
@@ -30,43 +38,43 @@ def build_styles():
     return {
         "title": ParagraphStyle(
             "title", parent=base["Title"],
-            fontName="Helvetica-Bold", fontSize=28, leading=32,
+            fontName=H["bold"], fontSize=28, leading=32,
             textColor=PRIMARY, alignment=TA_CENTER, spaceAfter=6,
         ),
         "subtitle": ParagraphStyle(
             "subtitle", parent=base["Normal"],
-            fontName="Helvetica", fontSize=14, leading=18,
+            fontName=H["regular"], fontSize=14, leading=18,
             textColor=DARK, alignment=TA_CENTER, spaceAfter=14,
         ),
         "slide_title": ParagraphStyle(
             "slide_title", parent=base["Heading1"],
-            fontName="Helvetica-Bold", fontSize=20, leading=24,
+            fontName=H["bold"], fontSize=20, leading=24,
             textColor=PRIMARY, spaceBefore=4, spaceAfter=10,
         ),
         "body": ParagraphStyle(
             "body", parent=base["Normal"],
-            fontName="Helvetica", fontSize=11, leading=14,
+            fontName=H["regular"], fontSize=11, leading=14,
             textColor=DARK, spaceAfter=6,
         ),
         "bullet": ParagraphStyle(
             "bullet", parent=base["Normal"],
-            fontName="Helvetica", fontSize=10.5, leading=13,
+            fontName=H["regular"], fontSize=10.5, leading=13,
             textColor=DARK, leftIndent=14, bulletIndent=0, spaceAfter=4,
         ),
         "timing": ParagraphStyle(
             "timing", parent=base["Normal"],
-            fontName="Helvetica-Oblique", fontSize=9,
+            fontName=H["italic"], fontSize=9,
             textColor=ACCENT, spaceAfter=8,
         ),
         "code": ParagraphStyle(
             "code", parent=base["Code"],
-            fontName="Courier", fontSize=7.5, leading=9,
+            fontName=H["mono"], fontSize=7.5, leading=9,
             textColor=DARK, backColor=CODE_BG,
             leftIndent=6, rightIndent=6, spaceBefore=4, spaceAfter=4,
         ),
         "footer": ParagraphStyle(
             "footer", parent=base["Normal"],
-            fontName="Helvetica", fontSize=8, textColor=colors.grey,
+            fontName=H["regular"], fontSize=8, textColor=colors.grey,
             alignment=TA_CENTER,
         ),
     }
@@ -79,8 +87,12 @@ def on_page(canvas_obj, doc):
     canvas_obj.setFillColor(PRIMARY)
     canvas_obj.rect(0, 0, PAGE_W, 0.22 * inch, fill=1, stroke=0)
     canvas_obj.setFillColor(colors.white)
-    canvas_obj.setFont("Helvetica", 7)
-    canvas_obj.drawString(MARGIN, PAGE_H - 0.24 * inch, "Stacking vs. Cloud Collision — Digital Arts for Architectural Designers")
+    canvas_obj.setFont(H["regular"], 7)
+    canvas_obj.drawString(
+        MARGIN, PAGE_H - 0.24 * inch,
+        f"{VISUALIST_HEADER} — Stacking vs. Cloud Collision",
+    )
+    canvas_obj.drawString(MARGIN, 0.08 * inch, f"{VISUALIST_HEADER} · Helvetica — NLS Records")
     canvas_obj.drawRightString(PAGE_W - MARGIN, 0.08 * inch, f"Slide {doc.page}")
     canvas_obj.restoreState()
 
@@ -105,9 +117,9 @@ def make_table(data, col_widths=None):
     t.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), PRIMARY),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
-        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTNAME", (0, 0), (-1, 0), H["bold"]),
         ("FONTSIZE", (0, 0), (-1, -1), 9),
-        ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
+        ("FONTNAME", (0, 1), (-1, -1), H["regular"]),
         ("BACKGROUND", (0, 1), (-1, -1), LIGHT_BG),
         ("GRID", (0, 0), (-1, -1), 0.5, ACCENT),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
@@ -316,6 +328,12 @@ Difference = geometry vs. gravity — stack into coordinates or collide through 
 
 
 def main():
+    ok, missing = verify_archive()
+    if ok:
+        print(f"Helvetica archive OK (NimbusSans preserved under fonts/CIM-Visualist/)")
+    else:
+        print(f"Warning: Helvetica archive incomplete: {missing}", file=sys.stderr)
+
     styles = build_styles()
     doc = SimpleDocTemplate(
         OUTPUT,
@@ -323,10 +341,10 @@ def main():
         leftMargin=MARGIN, rightMargin=MARGIN,
         topMargin=MARGIN + 0.2 * inch, bottomMargin=MARGIN + 0.15 * inch,
         title="Stacking vs. Cloud Collision — Digital Arts Tutorial",
-        author="Comparative .diff Tutorial",
+        author=VISUALIST_CREDIT,
     )
     doc.build(build_story(styles), onFirstPage=on_page, onLaterPages=on_page)
-    print(f"Wrote {OUTPUT}")
+    print(f"Wrote {OUTPUT} [{H['regular']} / {VISUALIST_HEADER}]")
 
 
 if __name__ == "__main__":

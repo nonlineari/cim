@@ -1,0 +1,10 @@
+URW++ Base 35 Font Package (Nimbus Sans — Helvetica substitute)
+
+Copyright (C) URW++ Design & Development GmbH
+
+Nimbus Sans is distributed under the GPL-compatible URW++ license as part of
+Ghostscript/URW Base 35. CIM archives these files so PDF typography survives
+host font removal. See Debian package fonts-urw-base35 or upstream URW++ terms.
+
+CIM / NLS Records archival copy — not a relicense of Linotype Helvetica™.
+PDF generators map Standard 14 "Helvetica" names to these metrics when embedded.

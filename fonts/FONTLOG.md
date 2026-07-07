@@ -1,31 +1,25 @@
 # FONTLOG — CIM Typography (NLS Records)
 
-Copyright (c) 2026 NLS Records  
-License: SIL Open Font License 1.1 — see [LICENSE-OFL](../LICENSE-OFL)
+Copyright (c) 2026 NLS Records
 
-## Purpose
+## Canonical: Helvetica (A. Visualist)
 
-The `fonts/` directory holds OFL-licensed typefaces for CIM deliverables:
+| Family | Role | Runtime name | Archive |
+|--------|------|--------------|---------|
+| **Helvetica** | NLS Visualist / A. Visualist body & UI | `Helvetica`, `Helvetica-Bold`, `Helvetica-Oblique` | `CIM-Visualist/Helvetica/NimbusSans/*.afm` `.t1` |
+| **Courier** | Code / `.diff` blocks | `Courier` | `NimbusMonoPS-Regular` (archived) |
 
-- RAND Stacking vs Cloud Collision tutorial PDFs
-- SYSTEMS / MANIFEST documentation exports
-- NLS Records visual identity in Disinformation Architecture materials
+See [CIM-Visualist/A-VISUALIST.md](CIM-Visualist/A-VISUALIST.md) and [cim_visualist_typography.py](cim_visualist_typography.py).
 
-## Families
+**Preserved before takedown:** URW Nimbus Sans (Helvetica substitute) + Nimbus Mono PS.  
+License: [LICENSE-URW.txt](CIM-Visualist/Helvetica/NimbusSans/LICENSE-URW.txt) (URW++ Base 35).
+
+Refresh archive: `./preserve_helvetica.sh`
+
+## OFL slot (future brand fonts)
 
 | Family | Files | Reserved Font Name | Status |
 |--------|-------|-------------------|--------|
-| *(slot)* | — | — | Add `.ttf` / `.otf` / `.woff2` here |
+| *(OFL)* | — | — | Add under `fonts/<Family>/` per [LICENSE-OFL](../LICENSE-OFL) |
 
-When adding a font:
-
-1. Place files under `fonts/<FamilyName>/`
-2. Add a row to this FONTLOG with Reserved Font Name(s)
-3. Include `OFL.txt` copy in the family directory (or reference root `LICENSE-OFL`)
-4. Do not release Modified Versions under Reserved Font Names without permission
-
-## Tutorial PDF note
-
-`01_tutorial/generate_tutorial_pdf.py` currently uses ReportLab built-in
-Helvetica/Courier (not OFL). When NLS Records brand fonts are added here,
-update the generator to load from `fonts/` under OFL terms.
+Tutorial PDF uses **Helvetica** via ReportLab Standard 14 — see `01_tutorial/generate_tutorial_pdf.py`.

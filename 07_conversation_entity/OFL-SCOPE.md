@@ -25,5 +25,6 @@ Full text: [LICENSE-OFL](../LICENSE-OFL)
 
 ## Does not apply to
 
-- ReportLab/PDF built-in Helvetica, Courier (third-party, not in `fonts/`)
+- **Helvetica canon** — archived under `fonts/CIM-Visualist/Helvetica/` (URW NimbusSans, see FONTLOG)
+- ReportLab Standard 14 Helvetica/Courier names in PDF output (see `cim_visualist_typography.py`)
 - Sketch imagery, Java source, tutorial prose (see MIT / CIM / WTFPL)
