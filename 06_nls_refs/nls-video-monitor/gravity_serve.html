@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NLS Visualist • Gravity Serve</title>
+  <style>
+    :root {
+      --bg: #09090f;
+      --panel: #161a2a;
+      --panel-deep: #0b1020;
+      --accent: #9be7ff;
+      --text: #e6f6ff;
+      --muted: #98b7c7;
+      --ok: #5ae0d0;
+      --warn: #c8d05a;
+      --err: #e85a6a;
+      --purple: #b05ad0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 16px 20px 32px; }
+    .bordered {
+      border: 1px solid rgba(155, 231, 255, 0.35);
+      border-radius: 12px;
+      background: var(--panel);
+      padding: 12px 14px;
+    }
+    h1 { margin: 0 0 4px; font-size: 1.45rem; color: var(--text); }
+    .sub { color: var(--muted); font-size: 0.85rem; }
+    .banner { letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; opacity: 0.75; }
+    .stages {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .stage {
+      text-align: center;
+      padding: 8px 4px;
+      border-radius: 8px;
+      background: var(--panel-deep);
+      border: 1px solid rgba(155,231,255,0.12);
+    }
+    .stage .sym { font-size: 1.25rem; }
+    .stage .lbl { font-size: 0.65rem; color: var(--muted); margin-top: 2px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .status-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(155,231,255,0.25);
+    }
+    .status-pill.live { color: var(--ok); border-color: var(--ok); }
+    .status-pill.off { color: var(--err); border-color: var(--err); }
+    .tabs { display: flex; gap: 4px; border-bottom: 1px solid rgba(155,231,255,0.2); margin: 14px 0 10px; }
+    .tab {
+      padding: 8px 14px;
+      cursor: pointer;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      user-select: none;
+    }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    input[type="text"], select {
+      flex: 1;
+      min-width: 200px;
+      background: var(--panel-deep);
+      border: 1px solid rgba(155,231,255,0.25);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font: inherit;
+    }
+    button, .btn {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: var(--panel-deep);
+      color: var(--text);
+      border: 1px solid rgba(155,231,255,0.3);
+      font-weight: 400;
+    }
+    button:hover { filter: brightness(1.08); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid rgba(155,231,255,0.1); }
+    th { color: var(--accent); font-weight: 600; }
+    .progress {
+      height: 6px;
+      background: var(--panel-deep);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .progress > div { height: 100%; background: var(--ok); transition: width 0.3s; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .card {
+      background: var(--panel-deep);
+      border: 1px solid rgba(155,231,255,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .card .body { padding: 10px 12px; }
+    .thumb {
+      height: 110px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.7rem;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid rgba(155,231,255,0.15);
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .asc-filmic {
+      filter: contrast(1.15) saturate(0.85) sepia(0.15) hue-rotate(-8deg);
+    }
+    .asc-gravity {
+      filter: contrast(1.2) saturate(0.7) hue-rotate(260deg);
+      box-shadow: inset 0 0 24px rgba(176,90,208,0.25);
+    }
+    .asc-label {
+      position: absolute;
+      bottom: 4px;
+      left: 6px;
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      background: rgba(9,9,15,0.72);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: var(--accent);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(176,90,208,0.25);
+      color: #d8a8f0;
+      margin-left: 4px;
+    }
+    .mint-line { color: var(--ok); font-size: 0.78rem; }
+    .asc-block {
+      white-space: pre-wrap;
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-height: 320px;
+      overflow: auto;
+      background: var(--panel-deep);
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(155,231,255,0.12);
+    }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+    .stat { background: var(--panel-deep); padding: 10px; border-radius: 8px; border: 1px solid rgba(155,231,255,0.1); }
+    .stat .n { font-size: 1.4rem; font-weight: 700; }
+    .stat .l { font-size: 0.68rem; color: var(--muted); }
+    #dl-status {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: var(--panel-deep);
+      border: 1px solid rgba(155,231,255,0.15);
+      font-size: 0.8rem;
+      display: none;
+    }
+    #dl-status.active { display: block; }
+    #dl-status.err { border-color: var(--err); color: var(--err); }
+    #dl-status.ok { border-color: var(--ok); color: var(--ok); }
+    #dl-status .bar {
+      height: 6px;
+      background: #111;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    #dl-status .bar > div {
+      height: 100%;
+      background: var(--ok);
+      width: 0%;
+      transition: width 0.3s;
+    }
+    #toast {
+      position: fixed; bottom: 16px; right: 16px;
+      background: var(--panel);
+      border: 1px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: none;
+      z-index: 99;
+    }
+    #player-modal {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #player-modal.open { display: flex; }
+    #player-modal video { max-width: 90vw; max-height: 70vh; border: 1px solid var(--accent); border-radius: 8px; background: #000; }
+    #player-title { color: var(--accent); font-size: 0.8rem; margin-bottom: 8px; max-width: 90vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .glitch { position: relative; display: inline-block; }
+    @media (max-width: 720px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stages { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row" style="justify-content:space-between; align-items:flex-start;">
+      <div>
+        <h1 class="glitch">NLS Visualist • Gravity Serve</h1>
+        <p class="banner">1000 years old nonlinear h@k reality</p>
+        <p class="sub">Browser client for gravity-server • jobs + catalog + interlaterus mint • no kill • no eval</p>
+      </div>
+      <div class="row">
+        <a href="/plan" class="sub" style="color:var(--accent);text-decoration:none;margin-right:12px;">📋 Approved Plan</a>
+        <span id="version-pill" class="sub" style="margin-right:10px">v—</span>
+        <span id="conn-pill" class="status-pill off">gravity offline</span>
+        <span class="sub" id="clock" title="UTC axiom → derived city clocks"></span>
+      </div>
+    </div>
+
+    <div class="stages">
+      <div class="stage"><div class="sym" style="color:#5ae0d0">◐</div><div class="lbl">INPUT</div></div>
+      <div class="stage"><div class="sym" style="color:#c8d05a">▦</div><div class="lbl">DOWNLOAD</div></div>
+      <div class="stage"><div class="sym" style="color:#e85a6a">⌬</div><div class="lbl">H.264</div></div>
+      <div class="stage"><div class="sym" style="color:#5ad07a">▣</div><div class="lbl">GRAVITY</div></div>
+      <div class="stage"><div class="sym" style="color:#b05ad0">◈</div><div class="lbl">CATALOG</div></div>
+    </div>
+
+    <div class="bordered" style="margin-bottom:12px;">
+      <div class="row">
+        <input type="text" id="url-input" placeholder="https://… paste URL">
+        <select id="mode-select" title="Pipeline = worker queue · Direct = app-style ~/Downloads/">
+          <option value="direct">Direct H.264 (app)</option>
+          <option value="pipeline">Pipeline Job (worker)</option>
+        </select>
+        <select id="preset-select">
+          <option value="balanced-4k">balanced-4k</option>
+          <option value="hq-4k">hq-4k</option>
+          <option value="fast-1080">fast-1080</option>
+          <option value="interstellar-nonlinear">interstellar-nonlinear</option>
+        </select>
+        <label class="sub" id="gravity-wrap"><input type="checkbox" id="gravity-check"> gravity</label>
+        <button id="add-btn">H.264 Direct</button>
+        <button class="secondary" id="open-dl-btn">Downloads ↗</button>
+      </div>
+      <p class="sub" id="mode-hint" style="margin:8px 0 0;">Direct mode matches GravityDesktop → ~/Downloads/direct-h264-*.mp4 + mint</p>
+      <div id="dl-status">
+        <div id="dl-status-text">Idle</div>
+        <div class="bar"><div id="dl-status-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="jobs">Gravity Jobs</div>
+      <div class="tab" data-tab="visualist">Visualist Catalog</div>
+      <div class="tab" data-tab="interlaterus">Interlaterus Mint</div>
+      <div class="tab" data-tab="downloads">Recent Downloads</div>
+      <div class="tab" data-tab="pos">POS / Spatio</div>
+      <div class="tab" data-tab="asc">ASC Live</div>
+    </div>
+
+    <div id="panel-jobs" class="panel active bordered">
+      <div class="stats" id="job-stats"></div>
+      <table>
+        <thead><tr><th>#</th><th>Title</th><th>Stage</th><th>%</th><th>Preset</th><th>Live</th></tr></thead>
+        <tbody id="jobs-body"></tbody>
+      </table>
+    </div>
+
+    <div id="panel-visualist" class="panel bordered">
+      <div class="grid" id="catalog-grid"></div>
+    </div>
+
+    <div id="panel-interlaterus" class="panel bordered">
+      <table>
+        <thead><tr><th>Pattern</th><th>Vertex</th><th>Title</th><th>File</th><th>Minted</th></tr></thead>
+        <tbody id="mint-body"></tbody>
+      </table>
+    </div>
+
+    <div id="panel-downloads" class="panel bordered">
+      <div class="grid" id="downloads-grid"></div>
+    </div>
+
+    <div id="panel-pos" class="panel bordered">
+      <div class="stats" id="pos-stats"></div>
+      <p class="sub" id="pos-digest" style="word-break:break-all;"></p>
+      <table>
+        <thead><tr><th>ID</th><th>AVD (filmic)</th><th>POS (vertex / zone)</th><th>Status</th></tr></thead>
+        <tbody id="pos-body"></tbody>
+      </table>
+    </div>
+
+    <div id="panel-asc" class="panel bordered">
+      <pre class="asc-block" id="asc-live">Waiting for gravity_update…</pre>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="player-modal">
+    <div style="text-align:center; max-width:92vw;">
+      <div id="player-title">ASC playback</div>
+      <video id="player" controls playsinline preload="metadata"></video>
+      <div style="margin-top:8px;"><button class="secondary" id="close-player">Close</button></div>
+    </div>
+  </div>
+
+  <script>
+    let currentTab = 'jobs';
+    let lastGravity = null;
+    let dlStatusTimer = null;
+
+    function $(id) { return document.getElementById(id); }
+    function esc(s) {
+      return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+    function toast(msg) {
+      const t = $('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 3200);
+    }
+
+    function renderDlStatus(data) {
+      const box = $('dl-status');
+      const text = $('dl-status-text');
+      const bar = $('dl-status-bar');
+      if (!data || data.status === 'idle') {
+        box.classList.remove('active', 'err', 'ok');
+        return;
+      }
+      box.classList.add('active');
+      box.classList.toggle('err', data.status === 'error');
+      box.classList.toggle('ok', data.status === 'done');
+      const msg = data.message || data.error || data.status;
+      text.textContent = msg;
+      const pct = Math.max(0, Math.min(100, data.progress || 0));
+      bar.style.width = pct + '%';
+      if (data.status === 'error') toast(data.error || 'Download failed (403?)');
+      if (data.status === 'done') {
+        toast('Direct download complete → ~/Downloads/');
+        fetchDownloads();
+      }
+    }
+
+    async function pollDlStatus() {
+      try {
+        const res = await fetch('/api/download/status');
+        const data = await res.json();
+        renderDlStatus(data);
+        if (data.status === 'downloading') {
+          if (!dlStatusTimer) dlStatusTimer = setInterval(pollDlStatus, 1000);
+        } else if (dlStatusTimer) {
+          clearInterval(dlStatusTimer);
+          dlStatusTimer = null;
+        }
+      } catch (e) { /* ignore */ }
+    }
+
+    document.querySelectorAll('.tab').forEach(el => {
+      el.addEventListener('click', () => showTab(el.dataset.tab));
+    });
+
+    function showTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      $('panel-' + tab).classList.add('active');
+      refreshActive();
+    }
+
+    function setConn(connected) {
+      const pill = $('conn-pill');
+      pill.textContent = connected ? 'gravity live' : 'gravity offline';
+      pill.className = 'status-pill ' + (connected ? 'live' : 'off');
+    }
+
+    function isCancelable(status) {
+      return ['pending','downloading','converting'].includes(status);
+    }
+
+    function renderJobs(jobs) {
+      const active = jobs.filter(j => ['downloading','converting','pending'].includes(j.status)).length;
+      const done = jobs.filter(j => j.status === 'completed').length;
+      const cancelled = jobs.filter(j => j.status === 'cancelled').length;
+      $('job-stats').innerHTML = `
+        <div class="stat"><div class="n">${active}</div><div class="l">Active</div></div>
+        <div class="stat"><div class="n">${done}</div><div class="l">Completed</div></div>
+        <div class="stat"><div class="n">${cancelled}</div><div class="l">Cancelled</div></div>
+        <div class="stat"><div class="n">${jobs.length}</div><div class="l">Total</div></div>
+        <div class="stat"><div class="n">${lastGravity && lastGravity.connected ? '●' : '○'}</div><div class="l">Protocol</div></div>`;
+      const tbody = $('jobs-body');
+      tbody.innerHTML = '';
+      jobs.forEach(j => {
+        const pct = Math.max(0, Math.min(100, j.progress || 0));
+        const tr = document.createElement('tr');
+        const cancelBtn = isCancelable(j.status)
+          ? `<button class="secondary cancel-job" data-id="${esc(j.id)}" style="font-size:0.7rem;padding:2px 6px">✕</button>`
+          : '<span class="sub">—</span>';
+        tr.innerHTML = `
+          <td>${esc(j.id)}</td>
+          <td>${esc((j.title || j.url || '').slice(0, 42))}</td>
+          <td>${esc(j.status)}${j.stage ? ' / ' + esc(j.stage) : ''}</td>
+          <td>
+            ${pct.toFixed(0)}%
+            <div class="progress"><div style="width:${pct}%"></div></div>
+          </td>
+          <td>${esc(j.preset)}</td>
+          <td>${cancelBtn}</td>`;
+        tbody.appendChild(tr);
+      });
+      tbody.querySelectorAll('.cancel-job').forEach(btn => {
+        btn.addEventListener('click', () => cancelJob(btn.dataset.id));
+      });
+    }
+
+    async function parseApiJson(res) {
+      const ct = (res.headers.get('content-type') || '').toLowerCase();
+      const text = await res.text();
+      if (!text) return { ok: false, error: 'Empty response (HTTP ' + res.status + ')' };
+      if (ct.includes('json') || text.trim().startsWith('{')) {
+        try { return JSON.parse(text); } catch (e) {
+          return { ok: false, error: 'Invalid JSON: ' + e.message };
+        }
+      }
+      return { ok: false, error: 'Non-JSON response (HTTP ' + res.status + ') — restart gravity-serve?' };
+    }
+
+    async function cancelJob(id) {
+      const jobId = Number(id);
+      if (!Number.isFinite(jobId) || jobId <= 0) {
+        toast('Cancel failed: invalid job id');
+        return;
+      }
+      try {
+        const res = await fetch('/api/cancel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: jobId })
+        });
+        const data = await parseApiJson(res);
+        if (data.ok) {
+          toast('Cancelled job #' + jobId + ' (still listed — status cancelled)');
+          fetchGravity();
+        } else {
+          toast(data.error || 'Cancel failed');
+        }
+      } catch (e) {
+        toast('Cancel failed: ' + e.message);
+      }
+    }
+
+    function mediaUrl(base, name) {
+      if (!name) return '';
+      return base + encodeURIComponent(name);
+    }
+
+    function renderCatalog(items) {
+      const grid = $('catalog-grid');
+      grid.innerHTML = '';
+      if (!items.length) {
+        grid.innerHTML = '<p class="sub">No visualist catalog items yet — complete worker jobs with gravity prep.</p>';
+        return;
+      }
+      items.slice().reverse().forEach(it => {
+        const mode = it.asc_mode || ((it.gravity_prepared || it.raw_h264_stream) ? 'GRAVITY' : 'FILMIC');
+        const isGravity = mode === 'GRAVITY';
+        const playName = it.play_name || (it.output_path ? it.output_path.split('/').pop() : '');
+        const thumbName = it.thumb_name;
+        const thumbClass = isGravity ? 'asc-gravity' : 'asc-filmic';
+        const thumbInner = thumbName
+          ? `<img src="${mediaUrl('/visualist/', thumbName)}" class="${thumbClass}" alt="ASC ${mode}" loading="lazy" onerror="this.style.display='none'">`
+          : '';
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="thumb">
+            ${thumbInner}
+            <span class="asc-label">ASC ${mode}</span>
+          </div>
+          <div class="body">
+            <div><strong>${esc((it.title || 'Untitled').slice(0, 36))}</strong>${isGravity ? '<span class="badge">GRAVITY</span>' : '<span class="badge" style="background:rgba(90,224,208,0.2);color:#5ae0d0">FILMIC</span>'}</div>
+            <div class="sub" style="margin-top:4px;">
+              ${it.technical && it.technical.source_duration ? Math.round(it.technical.source_duration) + 's' : (it.technical && it.technical.duration ? Math.round(it.technical.duration) + 's' : '')}
+              ${playName ? ' • ' + esc(playName.slice(0, 28)) : ''}
+            </div>
+            <div class="row" style="margin-top:8px;">
+              ${playName && it.playable !== false ? `<button class="secondary" data-play="${mediaUrl('/visualist/', playName)}" data-title="${esc(it.title || playName)}">▶ Play MP4</button>` : ''}
+              ${it.h264_stream_name ? `<span class="sub" title="Raw elementary stream — use ffplay/VLC">H.264 raw: ${esc(it.h264_stream_name.slice(0,18))}…</span>` : ''}
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+      grid.querySelectorAll('[data-play]').forEach(btn => {
+        btn.addEventListener('click', () => openPlayer(btn.dataset.play, btn.dataset.title));
+      });
+    }
+
+    function renderInterlaterus(items) {
+      const tbody = $('mint-body');
+      tbody.innerHTML = '';
+      if (!items.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="sub">No blockcode mints — use GravityDesktop download or interlaterus_desktop.py watch</td></tr>';
+        return;
+      }
+      items.slice().reverse().forEach(it => {
+        const v = it.vertex ? `[${it.vertex.join(',')}]` : '—';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="mint-line">${esc(it.pattern_code)}</td>
+          <td>${esc(v)}</td>
+          <td>${esc((it.title || '').slice(0, 28))}</td>
+          <td>${esc((it.media_path || '').split('/').pop())}</td>
+          <td class="sub">${esc((it.minted_at || '').slice(0, 19))}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderDownloads(items) {
+      const grid = $('downloads-grid');
+      grid.innerHTML = '';
+      if (!items.length) {
+        grid.innerHTML = '<p class="sub">No direct-h264/gif downloads in ~/Downloads/</p>';
+        return;
+      }
+      items.forEach(it => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const mint = it.pattern_code
+          ? `<div class="mint-line">${esc(it.pattern_code)} v${esc((it.vertex || []).join(''))}</div>`
+          : '<div class="sub">mint pending</div>';
+        card.innerHTML = `
+          <div class="thumb">direct download</div>
+          <div class="body">
+            <div><strong>${esc(it.name)}</strong></div>
+            ${mint}
+            <div class="row" style="margin-top:8px;">
+              <button class="secondary" data-play="/downloads/${encodeURIComponent(it.name)}">▶ Play</button>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+      grid.querySelectorAll('[data-play]').forEach(btn => {
+        btn.addEventListener('click', () => openPlayer(btn.dataset.play));
+      });
+    }
+
+    function renderPos(data) {
+      const s = data.summary || {};
+      $('pos-stats').innerHTML = `
+        <div class="stat"><div class="n">${s.paired_avd_pos || 0}</div><div class="l">Paired</div></div>
+        <div class="stat"><div class="n">${s.orphans_avd_only || 0}</div><div class="l">AVD only</div></div>
+        <div class="stat"><div class="n">${s.orphans_pos_only || 0}</div><div class="l">POS only</div></div>
+        <div class="stat"><div class="n">${s.vertices_occupied || 0}/16</div><div class="l">Vertices</div></div>`;
+      $('pos-digest').textContent = 'proof_of_spatio (POS) digest: ' + (data.proof_digest || '—');
+      const tbody = $('pos-body');
+      tbody.innerHTML = '';
+      const entries = (data.entries || []).slice(0, 40);
+      if (!entries.length) {
+        tbody.innerHTML = '<tr><td colspan="4" class="sub">No positioning data — run: nls-video spatio --rebuild</td></tr>';
+        return;
+      }
+      entries.forEach(e => {
+        const avd = e.avd || {};
+        const pos = e.pos || {};
+        const smc = pos.storage_memory_category || {};
+        let status = 'paired';
+        if (avd.path && !pos.vertex) status = 'AVD only';
+        if (pos.vertex && !avd.path) status = 'POS only';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="sub">${esc((e.id || '').slice(0, 14))}</td>
+          <td>${esc((avd.name || avd.title || '—').slice(0, 28))}<br><span class="sub">${esc(avd.asc_mode || '')}</span></td>
+          <td>${pos.vertex ? esc('[' + pos.vertex.join(',') + ']') : '—'}<br><span class="sub">${esc(pos.pattern_code || '')} zone=${esc(smc.zone || '—')}</span></td>
+          <td>${esc(status)}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function fetchPos(rebuild) {
+      const url = rebuild ? '/api/spatio/proof?rebuild=1' : '/api/spatio/proof';
+      const res = await fetch(url);
+      const data = await parseApiJson(res);
+      if (data.ok !== false) renderPos(data);
+    }
+
+    function renderAsc(data) {
+      const jobs = data.jobs || [];
+      const cat = data.catalog || [];
+      const lines = [];
+      lines.push('⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻⿰  gravity_update LIVE  ⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻⿰');
+      lines.push('timestamp: ' + (data.timestamp || new Date().toISOString()));
+      lines.push('jobs: ' + jobs.length + '  catalog: ' + cat.length);
+      lines.push('');
+      lines.push('⿴ ASC SIDE (filmic)          ⿴ SC SIDE (storage_memory)');
+      jobs.slice(0, 6).forEach(j => {
+        lines.push(`  #${j.id} ${(j.title||'').slice(0,24)}  ${j.status} ${(j.progress||0).toFixed(0)}%`);
+      });
+      cat.slice(0, 4).forEach(c => {
+        const smc = c.storage_memory_category || {};
+        lines.push(`  ${(c.title||'?').slice(0,20)} grav=${!!(c.gravity_prepared||c.raw_h264_stream)} zone=${smc.zone||'—'}`);
+      });
+      lines.push('');
+      lines.push('⿺ [END symmetric ASC vs SC] ⿺');
+      $('asc-live').textContent = lines.join('\n');
+    }
+
+    async function fetchVersion() {
+      try {
+        const res = await fetch('/api/version');
+        const data = await res.json();
+        if (data.version) $('version-pill').textContent = 'v' + data.version;
+      } catch (e) { /* optional */ }
+    }
+
+    async function fetchGravity() {
+      try {
+        const res = await fetch('/api/gravity');
+        const data = await res.json();
+        lastGravity = data;
+        setConn(!!data.connected);
+        renderJobs(data.jobs || []);
+        renderCatalog(data.catalog || []);
+        if (currentTab === 'asc') renderAsc(data);
+      } catch (e) {
+        setConn(false);
+      }
+    }
+
+    async function fetchInterlaterus() {
+      const res = await fetch('/api/interlaterus');
+      const data = await res.json();
+      renderInterlaterus(data.items || []);
+    }
+
+    async function fetchDownloads() {
+      const res = await fetch('/api/downloads');
+      const data = await res.json();
+      renderDownloads(data.items || []);
+    }
+
+    function refreshActive() {
+      if (currentTab === 'interlaterus') fetchInterlaterus();
+      if (currentTab === 'downloads') fetchDownloads();
+      if (currentTab === 'pos') fetchPos(false);
+      if (currentTab === 'asc' && lastGravity) renderAsc(lastGravity);
+    }
+
+    function openPlayer(src, title) {
+      const v = $('player');
+      $('player-title').textContent = title ? 'ASC • ' + title : 'ASC playback';
+      v.pause();
+      v.removeAttribute('src');
+      v.load();
+      v.src = src;
+      v.type = 'video/mp4';
+      $('player-modal').classList.add('open');
+      v.play().catch(() => toast('Playback failed — check file exists and gravity-serve Range support'));
+    }
+
+    $('close-player').addEventListener('click', () => {
+      $('player').pause();
+      $('player-modal').classList.remove('open');
+    });
+
+    function syncModeUi() {
+      const pipeline = $('mode-select').value === 'pipeline';
+      $('preset-select').style.display = pipeline ? '' : 'none';
+      $('gravity-wrap').style.display = pipeline ? '' : 'none';
+      $('add-btn').textContent = pipeline ? 'Add Job' : 'H.264 Direct';
+      $('mode-hint').textContent = pipeline
+        ? 'Pipeline → worker queue → ~/Videos/NLS-Visualist/ (needs worker + gravity-server)'
+        : 'Direct → ~/Downloads/direct-h264-*.mp4 + interlaterus mint (matches GravityDesktop app)';
+    }
+    $('mode-select').addEventListener('change', syncModeUi);
+    syncModeUi();
+
+    $('add-btn').addEventListener('click', async () => {
+      const url = $('url-input').value.trim();
+      if (!url) return toast('Enter a URL');
+      const pipeline = $('mode-select').value === 'pipeline';
+      try {
+        const res = await fetch(pipeline ? '/api/add' : '/api/download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(pipeline ? {
+            url,
+            preset: $('preset-select').value,
+            gravity: $('gravity-check').checked
+          } : { url, gif: false, mint: true })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          if (pipeline) {
+            toast('Added job #' + data.job_id);
+          } else {
+            $('dl-status').classList.add('active');
+            $('dl-status-text').textContent = 'Starting direct download…';
+            $('dl-status-bar').style.width = '0%';
+            pollDlStatus();
+          }
+          fetchGravity();
+        } else toast(data.error || 'Request failed');
+      } catch (e) {
+        toast('Request failed: ' + e.message);
+      }
+    });
+
+    $('url-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') $('add-btn').click();
+    });
+
+    $('open-dl-btn').addEventListener('click', async () => {
+      await fetch('/api/open-downloads', { method: 'POST' });
+      toast('Opened ~/Downloads/');
+    });
+
+    let lastTimePayload = null;
+
+    async function fetchTime() {
+      try {
+        const res = await fetch('/api/time');
+        lastTimePayload = await res.json();
+        renderClock();
+      } catch (e) { /* keep last */ }
+    }
+
+    function renderClock() {
+      const el = $('clock');
+      const d = lastTimePayload;
+      if (!d || !d.utc) {
+        el.textContent = '';
+        return;
+      }
+      const derived = d.derived || {};
+      const ny = derived.new_york ? derived.new_york.split(' ')[1] : '—';
+      const lon = derived.london ? derived.london.split(' ')[1] : '—';
+      const hk = derived.hong_kong ? derived.hong_kong.split(' ')[1] : '—';
+      const la = derived.los_angeles ? derived.los_angeles.split(' ')[1] : '—';
+      const loc = d.local ? d.local.split(' ')[1] : '—';
+      const locTz = (d.local_tz || 'local').replace('America/', '').replace('Europe/', '').replace('Asia/', '');
+      el.textContent = 'UTC ' + (d.utc.split(' ')[1] || d.utc)
+        + ' ⊳ ' + locTz + ' ' + loc
+        + ' · NY ' + ny + ' · LON ' + lon + ' · HK ' + hk + ' · LA ' + la;
+    }
+
+    function tickClock() {
+      if (lastTimePayload) renderClock();
+    }
+
+    setInterval(() => {
+      fetchGravity();
+      if (currentTab === 'interlaterus') fetchInterlaterus();
+      if (currentTab === 'downloads') fetchDownloads();
+      if (currentTab === 'pos') fetchPos(false);
+    }, 2000);
+    setInterval(fetchTime, 1000);
+
+    fetchVersion();
+    fetchTime();
+    fetchGravity();
+    fetchInterlaterus();
+    fetchDownloads();
+    fetchPos(false);
+    pollDlStatus();
+    tickClock();
+  </script>
+</body>
+</html>

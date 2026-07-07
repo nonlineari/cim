@@ -1,0 +1,75 @@
+# Java
+*.class
+*.jar
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Local runtime / secrets (never commit)
+.env
+*.pem
+cookies.txt
+**/cookies.txt
+
+# Interlaterus / blockcode local data
+blockcode_registry.db
+nls_media_catalog.json
+ncomm_export_manifest.json
+*.interlaterus.json
+*.pending-mint.json
+
+# NLS video pipeline local state
+visualist_catalog.json
+*.nlsvis.json
+jobs.db
+**/jobs.db
+cron.db
+position_index.json
+proof-of-spatio.json
+aoa-delta.json
+aoa-delta-proof.json
+gravity-serve-running.json
+mm-notify.json
+
+# Runtime JSON / JSONL logs (generated — never commit)
+**/runtime-logs/
+runtime-logs/
+*-live.jsonl
+*.jsonl
+verify-*.json
+**/verify-*.json
+
+# Local snapshot backups (optional tree copies)
+backups/
+archives/
+
+# gravity-serve archive manifests (local only; sources stay in repo)
+**/archives/gravity-serve-*/
+
+# Downloads / media artifacts
+direct-h264-*
+direct-gif-*
+*.h264
+*.vp56.webm
+*.vp6f.interstellar.mov
+
+# Worktrees
+.worktrees/
+worktrees/
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Bundled binaries (optional — keep out of git if large)
+yt-dlp
+*.deb

@@ -1,0 +1,39 @@
+{
+  "name": "nls-video-monitor",
+  "version": "1.1.9",
+  "tag": "v1.1.9",
+  "released": "2026-07-05",
+  "description": "NLS Visualist stack — GravityDesktop, pipeline worker, gravity-serve browser dashboard",
+  "components": {
+    "gravity_desktop": {
+      "version": "1.1.9",
+      "main": "GravityDesktop.java"
+    },
+    "nls_video_pipe": {
+      "version": "1.1.9",
+      "main": "nls_video_pipe.py"
+    },
+    "gravity_serve": {
+      "version": "1.1.9",
+      "main": "gravity_serve.html"
+    },
+    "interlaterus_desktop": {
+      "version": "1.1.9",
+      "main": "interlaterus_desktop.py"
+    }
+  },
+  "ports": {
+    "gravity_server": 4242,
+    "gravity_serve": 8766,
+    "nls_serve": 8765
+  },
+  "changelog": {
+    "1.1.9": [
+      "Fix /api/cancel — JSON route; restart gravity-serve after upgrades",
+      "DB-first job snapshot — cancelled jobs remain visible",
+      "Proof of Spatio (POS): position_index.json + proof digest API",
+      "Direct download 403 retry, cookies setup, gravity-serve status bar",
+      "parseApiJson / non-JSON 404 handling in HTML + Java clients"
+    ]
+  }
+}

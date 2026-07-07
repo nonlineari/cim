@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approved Plan — AVD/POS Cron Catalog Positioning</title>
+  <style>
+    :root {
+      --bg: #09090f;
+      --panel: #161a2a;
+      --panel-deep: #0b1020;
+      --accent: #9be7ff;
+      --text: #e6f6ff;
+      --muted: #98b7c7;
+      --ok: #5ae0d0;
+      --purple: #b05ad0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 20px 24px 48px; }
+    h1 { font-size: 1.5rem; margin: 0 0 8px; }
+    h2 { font-size: 1.1rem; color: var(--accent); margin: 28px 0 10px; border-bottom: 1px solid rgba(155,231,255,0.2); padding-bottom: 6px; }
+    h3 { font-size: 0.95rem; color: var(--ok); margin: 18px 0 8px; }
+    .sub, p.sub { color: var(--muted); font-size: 0.85rem; }
+    blockquote {
+      margin: 12px 0;
+      padding: 10px 14px;
+      border-left: 3px solid var(--purple);
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(155,231,255,0.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 14px 0;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 10px 0; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(155,231,255,0.12); vertical-align: top; }
+    th { color: var(--accent); }
+    pre {
+      background: var(--panel-deep);
+      border: 1px solid rgba(155,231,255,0.15);
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      font-size: 0.78rem;
+    }
+    code { color: var(--ok); }
+    ul { padding-left: 1.2rem; }
+    li { margin: 4px 0; }
+    .chart {
+      background: var(--panel-deep);
+      border: 1px solid rgba(155,231,255,0.2);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+    .chart .mermaid { display: flex; justify-content: center; }
+    .nav { margin-bottom: 16px; }
+    .nav a { color: var(--accent); margin-right: 14px; }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(176,90,208,0.25);
+      color: #d8a8f0;
+      margin-left: 8px;
+    }
+    .todo { list-style: none; padding: 0; }
+    .todo li { padding: 6px 0; border-bottom: 1px solid rgba(155,231,255,0.08); }
+    .todo li::before { content: "☐ "; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <a href="index.htm">← CIM Serve Hub (index.htm)</a>
+      <a href="/">Gravity Serve</a>
+      <a href="cim-approved-plan.html">CIM Plan</a>
+      <a href="licenses.html">Licenses</a>
+      <a href="/plan.md">plan.md</a>
+      <a href="/plan.original.md">plan.original.md</a>
+    </div>
+
+    <blockquote>
+      Extend the existing gravity-serve HTML + nls_video_pipe.py stack with a lightweight cron scheduler that periodically reconciles catalog positioning: AVD (Analog/filmic ASC side) and POS (tesseract vertex + storage_memory_category placement), surfaced in new dashboard tabs and APIs.
+    </blockquote>
+
+    <h1>Cron Jobs for AVD/POS Catalog Positioning <span class="badge">APPROVED</span></h1>
+    <p class="sub">Exact diagrams from approved design session — Gravity HTML Stack</p>
+
+    <h2>What you confirmed</h2>
+    <ul>
+      <li><strong>AVD</strong> and <strong>POS</strong> are <strong>catalog positioning concepts</strong>, not Android emulators or retail Point-of-Sale systems.</li>
+      <li>Target is the <strong>current stack</strong>: gravity_serve.html + nls_video_pipe.py + system cron — not a new Node/Workers app.</li>
+    </ul>
+
+    <h2>Concept mapping</h2>
+    <table>
+      <thead><tr><th>Term</th><th>Meaning in this stack</th><th>Existing data</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>AVD</strong> (Analog Video Data)</td>
+          <td>ASC <strong>filmic/analog side</strong> — direct downloads, probe vectors, FILMIC playback path</td>
+          <td><code>asc_mode</code> in <code>_enrich_visualist_item</code>, <code>~/Downloads/direct-h264-*</code>, interlaterus probe metadata</td>
+        </tr>
+        <tr>
+          <td><strong>POS</strong> (Position)</td>
+          <td><strong>Placement</strong> in catalog space — tesseract vertex + storage memory zone</td>
+          <td><code>vertex</code> in interlaterus_desktop.py + <code>storage_memory_category</code> in nls_video_pipe.py</td>
+        </tr>
+        <tr>
+          <td><strong>Symmetric view</strong></td>
+          <td>ASC (AVD) vs SC (POS) already rendered in ASC Live tab</td>
+          <td><code>renderAsc</code> in gravity_serve.html</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Architecture chart — Scheduler + stores + HTML stack</h2>
+    <div class="chart">
+      <pre class="mermaid">
+flowchart TB
+    subgraph scheduler [Scheduler Layer]
+        CronTab[system crontab optional]
+        CronRunner[nls-video cron-runner thread]
+        CronTab -->|tick| CronRunner
+    end
+
+    subgraph tasks [Scheduled Tasks]
+        MintWatch[mint_watch]
+        PosReconcile[pos_reconcile]
+        AvdScan[avd_scan]
+    end
+
+    subgraph stores [Positioning Stores]
+        JobsDB["jobs.db"]
+        VisCat["visualist_catalog.json"]
+        IntCat["nls_media_catalog.json"]
+        BlockDB["blockcode_registry.db"]
+        PosIndex["position_index.json NEW"]
+    end
+
+    subgraph serve [HTML Stack]
+        GravityServe[gravity-serve :8766]
+        HTML[gravity_serve.html]
+        APIs["/api/cron /api/positioning"]
+    end
+
+    CronRunner --> MintWatch
+    CronRunner --> PosReconcile
+    CronRunner --> AvdScan
+    MintWatch --> BlockDB
+    PosReconcile --> PosIndex
+    PosReconcile --> VisCat
+    AvdScan --> IntCat
+    GravityServe --> APIs
+    APIs --> HTML
+    PosIndex --> APIs
+    VisCat --> GravityBridge
+    BlockDB --> GravityBridge
+      </pre>
+    </div>
+
+    <h2>Architectural approach</h2>
+
+    <h3>1. Two-layer scheduling (not browser cron)</h3>
+    <table>
+      <thead><tr><th>Layer</th><th>Role</th><th>When to use</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>In-process runner</strong></td>
+          <td>Background thread inside gravity-serve (or standalone nls-video cron-runner) polls due tasks every 30–60s</td>
+          <td>Dev, always-on dashboard</td>
+        </tr>
+        <tr>
+          <td><strong>System crontab</strong></td>
+          <td><code>*/5 * * * * nls-video cron tick</code> as a safety net / headless mode</td>
+          <td>Production, reboot survival</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. Task registry</h3>
+    <pre><code>cron_tasks (
+  id, name, task_type,   -- mint_watch | pos_reconcile | avd_scan
+  schedule_cron,
+  enabled, last_run, next_run, last_status, last_error, config_json
+)
+cron_runs (id, task_id, started, finished, status, result_json)</code></pre>
+    <ul>
+      <li><strong>mint_watch</strong> — every 10 min: scan ~/Downloads/direct-h264-*, mint if missing</li>
+      <li><strong>pos_reconcile</strong> — every 30 min: merge vertex + storage_memory_category into position index</li>
+      <li><strong>avd_scan</strong> — every 15 min: tag analog files with AVD records (probe hash, asc_mode=FILMIC)</li>
+    </ul>
+
+    <h3>3. Position index (canonical POS artifact)</h3>
+    <pre><code>{
+  "id": "sha256-or-pattern",
+  "avd": { "path": "~/Downloads/direct-h264-….mp4", "asc_mode": "FILMIC", "probe": {} },
+  "pos": { "vertex": [0,1,0,1], "pattern_code": "AB.2:4.P&B.F1", "storage_memory_category": { "zone": "default-zone" } },
+  "synced_at": "ISO8601"
+}</code></pre>
+    <p>Conflict rule: <strong>blockcode DB wins for vertex</strong>; <strong>visualist catalog wins for storage_memory_category</strong>; AVD path from newest file mtime.</p>
+
+    <h3>4. Task implementations</h3>
+    <table>
+      <thead><tr><th>Task</th><th>Reuses</th><th>Does</th></tr></thead>
+      <tbody>
+        <tr><td>mint_watch</td><td>interlaterus_desktop.mint_media_file</td><td>Idempotent mint for new downloads</td></tr>
+        <tr><td>avd_scan</td><td>probe_media, _recent_downloads_list</td><td>Build/update AVD side of position_index</td></tr>
+        <tr><td>pos_reconcile</td><td>get_storage_memory_category, occupied_vertices</td><td>Align POS fields; flag orphans</td></tr>
+      </tbody>
+    </table>
+
+    <h3>5. API surface</h3>
+    <table>
+      <thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>GET</td><td>/api/cron</td><td>List tasks + last run status</td></tr>
+        <tr><td>GET</td><td>/api/cron/runs</td><td>Recent run log (tail 50)</td></tr>
+        <tr><td>POST</td><td>/api/cron/run</td><td>Manual trigger { "task_id": N }</td></tr>
+        <tr><td>POST</td><td>/api/cron/toggle</td><td>Enable/disable task</td></tr>
+        <tr><td>GET</td><td>/api/positioning</td><td>Full position_index (AVD/POS pairs)</td></tr>
+        <tr><td>GET</td><td>/api/positioning/orphans</td><td>Items missing AVD or POS half</td></tr>
+      </tbody>
+    </table>
+
+    <h3>6. HTML stack changes</h3>
+    <ul>
+      <li><strong>Scheduled tab</strong> — task table, Run now, Enable/Disable</li>
+      <li><strong>Positioning tab</strong> — AVD (ASC filmic) | POS (vertex + zone), orphan badges, optional 4×4 vertex heatmap</li>
+      <li><strong>ASC Live</strong> — vertex + full storage_memory_category per catalog row</li>
+    </ul>
+
+    <h2>Data flow chart — scheduled tick</h2>
+    <div class="chart">
+      <pre class="mermaid">
+sequenceDiagram
+    participant Cron as cron_tick
+    participant Tasks as task_runner
+    participant AVD as avd_scan
+    participant POS as pos_reconcile
+    participant Idx as position_index.json
+    participant GS as gravity-serve
+    participant UI as gravity_serve.html
+
+    Cron->>Tasks: due tasks
+    Tasks->>AVD: scan Downloads
+    AVD->>Idx: update avd fields
+    Tasks->>POS: merge catalogs + blockcode DB
+    POS->>Idx: update pos fields
+    GS->>Idx: GET /api/positioning
+    UI->>GS: poll every 2s
+    UI->>UI: render Positioning tab
+      </pre>
+    </div>
+
+    <h2>Phased delivery</h2>
+    <div class="panel">
+      <p><strong>Phase 1 — Foundation</strong></p>
+      <ul><li>SQLite cron registry + cron tick CLI</li><li>pos_reconcile + position_index.json</li><li>/api/positioning + Positioning tab</li></ul>
+      <p><strong>Phase 2 — Automation</strong></p>
+      <ul><li>mint_watch + avd_scan tasks</li><li>/api/cron + Scheduled tab + manual run</li><li>In-process scheduler in gravity-serve</li></ul>
+      <p><strong>Phase 3 — Ops</strong></p>
+      <ul><li>System crontab template, run logs, orphan alerts</li><li>ASC Live enrichment with vertex/zone</li></ul>
+    </div>
+
+    <h2>Todos</h2>
+    <ul class="todo">
+      <li><strong>cron-schema</strong> — Add cron_tasks + cron_runs SQLite schema and seed default tasks</li>
+      <li><strong>position-index</strong> — Implement position_index.json builder: pos_reconcile merges visualist + interlaterus + blockcode DB</li>
+      <li><strong>task-runners</strong> — Extract interlaterus watch into run_watch_once(); implement avd_scan and cron tick runner</li>
+      <li><strong>api-endpoints</strong> — Add /api/cron, /api/cron/run, /api/positioning to gravity-serve Handler</li>
+      <li><strong>html-tabs</strong> — Add Scheduled + Positioning tabs to gravity_serve.html with 2s polling</li>
+      <li><strong>ops-wiring</strong> — Document crontab in Installation.md; GRAVITY_CRON_ENABLED in run-gravity-serve.sh</li>
+    </ul>
+
+    <p class="sub" style="margin-top:24px;">Source: plan.md / plan.original.md — approved design session 2026-07-05</p>
+  </div>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        primaryColor: '#161a2a',
+        primaryTextColor: '#e6f6ff',
+        primaryBorderColor: '#9be7ff',
+        lineColor: '#5ae0d0',
+        secondaryColor: '#0b1020',
+        tertiaryColor: '#161a2a'
+      }
+    });
+  </script>
+</body>
+</html>

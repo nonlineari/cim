@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git Review — CIM Serve Hub</title>
+  <link rel="stylesheet" href="serve-hub-common.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <a href="index.htm">← CIM Serve Hub (index.htm)</a>
+      <a href="licenses.html">Licenses</a>
+      <a href="changelog.html">Changelog</a>
+    </div>
+
+    <h1>Git Review <span class="badge">LOCAL ONLY</span></h1>
+    <p class="sub">Review via <a href="index.htm">index.htm</a> until you approve private GitHub push</p>
+
+    <h2>Local commands</h2>
+    <pre>cd /home/s9/Downloads/CIM
+git status
+git log --oneline -10
+git tag -l
+
+cd 06_nls_refs/nls-video-monitor
+python3 build_review_html.py
+python3 -m http.server 8765
+# http://127.0.0.1:8765/index.htm</pre>
+
+    <h2>GitHub private push (when approved)</h2>
+    <div class="panel">
+      <p><strong>Placeholder remote:</strong></p>
+      <pre>git@github.com:YOUR_ORG/cim-private.git</pre>
+      <ol>
+        <li>Create a <strong>private</strong> repository on GitHub</li>
+        <li><code>git remote add origin git@github.com:YOUR_ORG/cim-private.git</code></li>
+        <li><code>git push -u origin main --tags</code></li>
+      </ol>
+      <p class="sub" style="color:var(--warn);">Do not push until you explicitly approve. Serve Hub HTML is the staging layer.</p>
+    </div>
+
+    <h2>Pre-push checklist</h2>
+    <ul class="todo" style="list-style:none;padding:0;">
+      <li>☐ Open <a href="index.htm">index.htm</a> — git meta current</li>
+      <li>☐ <a href="licenses.html">licenses.html</a> — URW Helvetica row present</li>
+      <li>☐ <a href="cim-approved-plan.html">cim-approved-plan.html</a> — APPROVED badge</li>
+      <li>☐ <code>04_rand_blockcode/build.sh</code> passes</li>
+      <li>☐ Tags v1.0.0 … v1.0.4 on main</li>
+    </ul>
+  </div>
+</body>
+</html>
