@@ -1,0 +1,25 @@
+# Build artifacts
+04_rand_blockcode/out/
+04_rand_blockcode/sources.txt
+**/__pycache__/
+**/*.class
+**/*.pyc
+
+# OS / editor
+.DS_Store
+._*
+*~
+.idea/
+.vscode/
+
+# Large archival TIFF sequence (kept on disk, not in git history)
+05_extrusion_sketches/Extrusion3_2_2_1_DUAL_VX_GL002B_Complete/VX_GL002B_A02/
+
+# NLS refs — compiled / cache / binaries
+06_nls_refs/**/__pycache__/
+06_nls_refs/**/*.class
+06_nls_refs/**/yt-dlp
+06_nls_refs/**/vlc_*.deb
+
+# GravityDesktop is a symlink farm — canonical sources live in nls-video-monitor
+06_nls_refs/GravityDesktop/

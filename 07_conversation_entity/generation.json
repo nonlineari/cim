@@ -1,0 +1,34 @@
+{
+  "generation": 1,
+  "created": "2026-07-07",
+  "root": "/home/s9/Downloads/CIM",
+  "notation": "RAND SYSTEM B \\ RAND SYSTEM A | NLS YOLODarket STEM",
+  "entities": [
+    "stacking-vs-collision-tutorial",
+    "rand-blockcode-java",
+    "extrusion3-mono-dual",
+    "extrusion3-mono-dup",
+    "nls-visualist-gravity",
+    "nls-hierarchy-stem"
+  ],
+  "source_pdfs": [
+    "02_source_pdfs/grok_report-2.pdf",
+    "02_source_pdfs/RAND_System_Design_Document.pdf"
+  ],
+  "systems": {
+    "A": {
+      "name": "Neat Stacking",
+      "sketch": "05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual",
+      "blocks": ["a.pixel_stack", "a.lsystem_stack", "a.recursive_sphere", "a.spout_output"]
+    },
+    "B": {
+      "name": "Cloud Collision",
+      "sketch": "05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP",
+      "blocks": ["b.audio_in", "b.fft_collision", "b.duplex_branch", "b.spectrum_render"]
+    },
+    "NLS": {
+      "name": "YOLODarket STEM",
+      "blocks": ["nls.yolo_darket", "nls.hierarchy_stem", "nls.visualist_bridge"]
+    }
+  }
+}
