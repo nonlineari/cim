@@ -1,0 +1,57 @@
+{
+  "name": "nls-osint-agent-modules",
+  "version": "1.0.0",
+  "updated": "2026-07-22",
+  "owner": "@nlsrecords",
+  "github": "https://github.com/nonlineari/nls-osint-agent",
+  "cim_path": "08_osint_agent",
+  "description": "Modular Best OSINT resources knowledge base for AI agents. English + French. NLS branded. Integrated as CIM STEM.",
+  "modules": [
+    {
+      "id": "youtube",
+      "file": "youtube.md",
+      "title": "YouTube Channels",
+      "title_fr": "Chaînes YouTube",
+      "count_approx": 23,
+      "primary_tags": ["OSINT", "GEOINT", "INFOSEC", "HACKING", "SOCMINT", "INVESTIGATIONS", "PRIVACY", "DARK WEB", "CONFLICTS", "DFIR", "SOURCING"]
+    },
+    {
+      "id": "newsletters",
+      "file": "newsletters.md",
+      "title": "Newsletters",
+      "title_fr": "Newsletters",
+      "count_approx": 18,
+      "primary_tags": ["OSINT", "GEOINT", "SOCMINT", "VERIFICATION", "INTELLIGENCE", "INFOSEC", "INVESTIGATIONS", "CONFLICTS", "SIGINT", "PHYSICAL SECURITY"]
+    },
+    {
+      "id": "blogs",
+      "file": "blogs.md",
+      "title": "Blogs",
+      "title_fr": "Blogs",
+      "count_approx": 40,
+      "primary_tags": ["OSINT", "SOCMINT", "GEOINT", "INFOSEC", "PRIVACY", "CTI", "HUMINT", "OPSEC", "HACKING", "INVESTIGATIONS", "CONFLICTS", "DARK WEB", "VERIFICATION", "MARITIME", "SIGINT", "INTELLIGENCE", "CRYPTOGRAPHY", "CHINA", "SANCTIONS"]
+    },
+    {
+      "id": "podcasts",
+      "file": "podcasts.md",
+      "title": "Podcasts",
+      "title_fr": "Podcasts",
+      "count_approx": 15,
+      "primary_tags": ["OSINT", "SOCMINT", "GEOINT", "INTELLIGENCE", "GEOPOLITICS", "CYBERCRIME", "DARK WEB", "INFOSEC", "PRIVACY", "OPSEC", "INVESTIGATIONS", "DEFENSE", "CONFLICTS", "DFIR"]
+    },
+    {
+      "id": "ctfs",
+      "file": "ctfs.md",
+      "title": "CTFs and Hackathons",
+      "title_fr": "CTFs et Hackathons",
+      "count_approx": 17,
+      "primary_tags": ["OSINT", "GEOINT", "SOCMINT", "HACKING", "INFOSEC", "RECRUITMENT", "GEOLOCATION", "VERIFICATION", "PENTESTING", "INVESTIGATIONS"]
+    }
+  ],
+  "agent_prompts": {
+    "en": "agent/SYSTEM_PROMPT_EN.md",
+    "fr": "agent/SYSTEM_PROMPT_FR.md"
+  },
+  "source": "OSINTTEAM Best OSINT resources infographic",
+  "license": "Curated public resources; this modular packaging CC-BY-NC for NLS / nonlineari use"
+}
