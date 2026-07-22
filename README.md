@@ -1,6 +1,6 @@
 # CIM — Conversation Entity Archive
 
-**Version 1.0.5** · Copyright © 2026 NLS Records
+**Version 1.0.6** · Copyright © 2026 NLS Records
 
 **Licenses:** [MIT](LICENSE) · [CIM](LICENSE-CIM) · [WTFPL](LICENSE-WTFPL) · [URW Helvetica](LICENSE-TYPOGRAPHY) · [OFL](LICENSE-OFL)  
 **Serve Hub:** [index.htm](06_nls_refs/nls-video-monitor/index.htm)
@@ -10,7 +10,7 @@ See [CHANGELOG.md](CHANGELOG.md)
 Local archive of the Grok conversation entity:
 
 ```
-RAND System B \ RAND System A | NLS YOLODarket STEM
+RAND System B \ RAND System A | NLS YOLODarket STEM | NLS OSINT Agent STEM
 ```
 
 ## Readily available systems
@@ -21,6 +21,7 @@ RAND System B \ RAND System A | NLS YOLODarket STEM
 | **RAND System A** (Neat Stacking) | [`05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/`](05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dual/) |
 | **RAND System B** (Cloud Collision) | [`05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/`](05_extrusion_sketches/Extrusion3_2_2_1_MONO_XXI_PS_INT_dUP/) |
 | **NLS YOLODarket STEM** | [`04_rand_blockcode/src/com/nls/rand/nls/`](04_rand_blockcode/src/com/nls/rand/nls/) |
+| **NLS OSINT Agent STEM** | [`08_osint_agent/`](08_osint_agent/) + [`osint/`](04_rand_blockcode/src/com/nls/rand/osint/) |
 | **RAND Stacking vs Cloud Collision Tutorial** | [`01_tutorial/`](01_tutorial/) |
 | **NLS Visualist** | [`06_nls_refs/nls-video-monitor/`](06_nls_refs/nls-video-monitor/) |
 
@@ -33,10 +34,11 @@ Full catalog: [SYSTEMS.md](SYSTEMS.md)
 | `01_tutorial/` | RAND Stacking vs Cloud Collision — 30min tutorial |
 | `02_source_pdfs/` | RAND source PDFs |
 | `03_parsed_sources/` | OCR text, page PNGs |
-| `04_rand_blockcode/` | **RAND BlockCode Java** — 13 blocks |
+| `04_rand_blockcode/` | **RAND BlockCode Java** — 14 blocks |
 | `05_extrusion_sketches/` | RAND System A & B Processing sketches |
 | `06_nls_refs/` | NLS Visualist references |
 | `07_conversation_entity/` | Manifest, generation metadata |
+| `08_osint_agent/` | **NLS OSINT Agent STEM** — modules + Grok prompts EN/FR |
 
 ## Quick start
 
@@ -47,16 +49,16 @@ cd 04_rand_blockcode
 
 ## RAND BlockCode Java
 
-Modular block pipeline wiring **RAND System A → RAND System B → NLS YOLODarket STEM**:
+Modular block pipeline wiring **RAND System A → RAND System B → NLS YOLODarket STEM → NLS OSINT Agent STEM**:
 
 - **System A blocks:** `pixel_stack`, `lsystem_stack`, `recursive_sphere`, `spout_output`
 - **System B blocks:** `audio_in`, `fft_collision`, `duplex_branch`, `spectrum_render`
-- **NLS blocks:** `yolo_darket`, `hierarchy_stem`, `nls_visualist_bridge`
+- **NLS blocks:** `yolo_darket`, `hierarchy_stem`, `osint_agent`, `nls_visualist_bridge`
 
 ## Git
 
 ```bash
-git tag -l          # v1.0.5
+git tag -l          # v1.0.6
 git log --oneline
 ```
 
