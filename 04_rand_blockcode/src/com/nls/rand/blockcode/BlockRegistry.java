@@ -5,6 +5,7 @@ import com.nls.rand.extrusion.ExtrusionDUPAdapter;
 import com.nls.rand.nls.HierarchySTEMBlock;
 import com.nls.rand.nls.NLSVisualistBridge;
 import com.nls.rand.nls.YOLODarketBlock;
+import com.nls.rand.osint.OSINTAgentBlock;
 import com.nls.rand.systema.LSystemStackBlock;
 import com.nls.rand.systema.PixelStackBlock;
 import com.nls.rand.systema.RecursiveSphereBlock;
@@ -35,6 +36,7 @@ public final class BlockRegistry {
         register(new SpectrumRenderBlock());
         register(new YOLODarketBlock());
         register(new HierarchySTEMBlock());
+        register(new OSINTAgentBlock());          // NLS OSINT Agent STEM
         register(new NLSVisualistBridge());
         register(new ExtrusionDualAdapter());
         register(new ExtrusionDUPAdapter());
